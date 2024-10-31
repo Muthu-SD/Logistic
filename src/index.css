@@ -1,13 +1,99 @@
-body {
+/* ------------------------------------------ common setup for css design -->START ------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif; /* Google font link is in html */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  /* display: block; */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+/* ------------------------------------------ common setup for css design -->END ------------------------------------ */
+
+/* ------------------------------------------ custom colors for Dashboard-app --> START ------------------------------------ */
+:root {
+  --bg: #000;
+  --primary-text: #fff;
+  --btn-primary: #efefe4;
+  --btn-hover: #e67e6e;
+  --btn-succes: green;
+  --gradient: linear-gradient(45deg, #8226f5 0%, #e625ea 100%) !important;
+  --color-pink-bg: pink;
+  --color-pink-text: rgb(168, 168, 168);
+  --color-red-bg: rgb(255, 18, 58);
+  --color-red-text: rgb(122, 41, 98);
+  --color-blue-bg: pink;
+  --color-blue-text: rgb(42, 48, 134);
+  /* LOGIN PAGE */
+  --btn-login: #00b5e2;
+  --btn-login-hover: #0093b1;
+  --box-shadow-login: #595555;
+  /* SIGNOUT BUTTON*/
+  --btn-signout-hover: #313030;
+  /* THEME COLOR*/
+  /* SIDEBAR */
+  --sidebar-bg: #a5a5a5;
+  --sidebar-menu-bg1: #101820;
+  --sidebar-menu-bg2: transparent;
+  --siebar-menu-text: #222222;
+}
+/* ------------------------------------------ custom colors for Dashboard-app --> END ------------------------------------ */
+
+
+.table-row-even {
+  background-color: #e9ebf8 !important; /* Data row color */
+}
+
+.table-row-odd {
+  background-color: #ffffff !important; /* Default row color */
+}
+
+.ant-table-thead > tr > th {
+  background-color: #d9d9d9 !important; /* Column header color */
+  color: #000; /* Optional: header text color */
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: #ececec !important; /* Hover effect */
+}
+
+.ant-table-cell-row:hover {
+  background: "#ececec" !important;
+}
+.ant-table-tbody > tr > td:hover {
+  background-color: #ececec !important;
+  color: #000;
+}
+:where(.css-dev-only-do-not-override-r03b94)
+  .ant-table-wrapper
+  .ant-table-cell-scrollbar {
+  box-shadow: none !important;
 }

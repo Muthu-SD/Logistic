@@ -3,8 +3,11 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  /* height: 40vmin; */
+  height: 400px;
+  width: 400px;
   pointer-events: none;
+  border-radius: 50%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -36,3 +39,6 @@
     transform: rotate(360deg);
   }
 }
+
+
+

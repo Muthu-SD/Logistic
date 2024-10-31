@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./auth/Login";
+import SignUp from "./auth/SignUp";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./protected-route";
+import { useTheme } from "./context/ThemeContext";
+import { ConfigProvider } from "antd";
 
-function App() {
+const App = () => {
+  // const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <div className={`App ${dark}`}>
+    <ConfigProvider theme={theme}>
+      <Router>
+        <Routes>
+          {/* Protected route for authenticated users */}
+          <Route
+            path="/"
+            element={<ProtectedRoute element={<Dashboard />} />}
+          />
+          {/* Route for sign up */}
+          <Route path="/signup" element={<SignUp />} />
+          {/* Route for login */}
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
+    </ConfigProvider>
+    // </div>
   );
-}
+};
 
 export default App;
