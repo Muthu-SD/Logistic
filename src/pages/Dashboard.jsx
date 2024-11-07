@@ -3,7 +3,7 @@ import { Layout, Table } from "antd";
 import Header from "../layouts/Header";
 import Sidebar from "../layouts/Sidebar";
 import styles from "../styles/Dashboard.module.css";
-import DashboardSidemenu from "./DashboardSidemenu";
+import DashboardD from "./dashboard/Dashboard";
 
 const { Content } = Layout;
 
@@ -135,12 +135,11 @@ const Dashboard = () => {
         <Header />
         <Content style={{ margin: "24px 16px 0", padding: 24 }}>
           {selectedKey === "1" && (
-            <div 
-            
+            <div
+
             // style={{ height: '500px', overflowY: 'auto' }}
-            
             >
-              <DashboardSidemenu />
+              <DashboardD />
             </div>
           )}
 
@@ -159,11 +158,7 @@ const Dashboard = () => {
             </div>
           )}
 
-          {selectedKey === "3" && (
-            <div >
-              Overall Shipping Status Content
-            </div>
-          )}
+          {selectedKey === "3" && <div>Overall Shipping Status Content</div>}
         </Content>
       </Layout>
     </Layout>

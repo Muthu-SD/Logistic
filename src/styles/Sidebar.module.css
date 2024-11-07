@@ -2,30 +2,30 @@
 
 .sidebar {
   /* background: var(--sidebar-bg); */
-    width: 200px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .logoContainer {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .logo {
-    max-width: 80%;
-    /* filter: invert(1); */
-  }
-  .signOut {
-    background: var(--bg);
-    position: absolute;
-    bottom: 10px;
-    left: 16px;
-    border: none;
-    color: var(--primary-text);
-  }
-  .signOut:hover {
-    background: var(--btn-signout-hover) !important;
-    color: var(--primary-text) !important;
-  }
+  width: 230px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.logoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  max-width: 80%;
+  /* filter: invert(1); */
+}
+.signOut {
+  background: var(--bg);
+  position: absolute;
+  bottom: 10px;
+  left: 16px;
+  border: none;
+  color: var(--primary-text);
+}
+.signOut:hover {
+  background: var(--btn-signout-hover) !important;
+  color: var(--primary-text) !important;
+}

@@ -1,47 +1,44 @@
 // src/components/Login.js
 import React, { useState } from "react";
-import { Form, Input, Button, message} from "antd";
+import { Form, Input, Button, message } from "antd";
 import { useNavigate, Link } from "react-router-dom";
 import useStore from "../store/UseStore";
 import Styles from "../styles/auth/AuthForm.module.css";
 import logo from "../assets/Logo.png"; // Import logo
 import illustrator from "../assets/login/Illustrator.svg"; // Import illustration
 import { useTheme } from "../context/ThemeContext";
+import axios from "axios";
 
 const Login = () => {
-  // const url =`Process.env.api`
   const navigate = useNavigate(); // Initialize useNavigate
   const [loading, setLoading] = useState(false);
   const { login } = useStore();
   const { theme } = useTheme();
-
-  // Pre-fill email and password
-  const [initialValues] = useState({
-    email: "Admin@albs.com",
-    password: "Admin@123",
-  });
+  const API_URL = process.env.REACT_APP_BACKEND_URL;
 
   const onFinish = async (values) => {
     setLoading(true);
+
     try {
-      // Mock authentication (replace with actual API call)
-      if (values.email === "Admin@albs.com" && values.password === "Admin@123") {
-        login({ email: values.email });
-        message.success("Login successful!");
-        navigate("/"); // Navigate to dashboard after successful login
-      } else {
-        message.error("Invalid credentials");
-      }
-      setLoading(false);
+      const response = await axios.post(`${API_URL}/api/users/login`, {
+        email: values.email,
+        password: values.password,
+      });
+
+      // Extract token, user, and message from the response data
+      const { token, user, message: Message } = response.data;
+      // Save token to localStorage and update login state
+      // localStorage.setItem("authToken", token);
+      login(user.email, token);
+
+      message.success(Message);
+      navigate("/"); // Navigate to the dashboard
     } catch (error) {
-      message.error("An error occurred during login");
+      message.error(error.response?.data?.message || "Invalid credentials");
     } finally {
       setLoading(false);
     }
   };
-
-  // const fetch uer = axios.get(`${url}`)
-  // const fetch uer = axios.post(`${url},`)
 
   return (
     <div className={Styles.pageWrapper}>
@@ -65,17 +62,18 @@ const Login = () => {
             name="login"
             onFinish={onFinish}
             className={Styles.formContainer}
-            initialValues={initialValues} // Set initial values for the form
           >
             <h2 className={Styles.formTitle}>Login</h2>
             <Form.Item
               name="email"
               rules={[{ required: true, message: "Please input your email!" }]}
             >
-              <Input type="email" placeholder="Email" 
-              style={{
-                background: theme.component.input.backgroundColor,
-              }}
+              <Input
+                type="email"
+                placeholder="Email"
+                style={{
+                  background: theme.component.input.backgroundColor,
+                }}
               />
             </Form.Item>
             <Form.Item
@@ -84,10 +82,11 @@ const Login = () => {
                 { required: true, message: "Please input your password!" },
               ]}
             >
-              <Input.Password placeholder="Password"
-              style={{
-                background: theme.component.input.backgroundColor,
-              }}
+              <Input.Password
+                placeholder="Password"
+                style={{
+                  background: theme.component.input.backgroundColor,
+                }}
               />
             </Form.Item>
             <Form.Item style={{ textAlign: "center" }}>
@@ -99,6 +98,11 @@ const Login = () => {
                 Login
               </Button>
             </Form.Item>
+            <p style={{ textAlign: "center" }}>
+              <Link to="/forgot-password" className={Styles.link}>
+                Forgot Password?
+              </Link>
+            </p>
             <p style={{ textAlign: "center" }}>
               Don't have an account?{" "}
               <Link to="/signup" className={Styles.link}>

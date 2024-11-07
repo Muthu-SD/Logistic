@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware"; // Import persist middleware
+import { persist } from "zustand/middleware";
 
 const useStore = create(
   persist(
@@ -7,33 +7,47 @@ const useStore = create(
       // Initial state
       user: null,
       isAuthenticated: false,
+      otpVerified: false,
+      otpSent: false,
 
-      // Sign up function
-      signup: (user) => {
+      // Sign up function with OTP handling
+      signup: (user, otp) => {
         if (user) {
-          set({ user, isAuthenticated: true });
+          set({ user, otpSent: true, otpVerified: false });
         } else {
           console.error("Signup failed: User data is required");
         }
       },
 
-      // Login function
-      login: (user) => {
-        if (user) {
-          set({ user, isAuthenticated: true });
+      // OTP verification function
+      verifyOtp: (inputOtp, actualOtp) => {
+        if (inputOtp === actualOtp) {
+          set({ isAuthenticated: true, otpVerified: true, otpSent: false });
+          console.log("OTP verified successfully");
         } else {
-          console.error("Login failed: User data is required");
+          console.error("OTP verification failed: Incorrect OTP");
+        }
+      },
+
+      // Login function
+      login: (email, token) => {
+        if (email && token) {
+          localStorage.setItem("authToken", token); // Store the token
+          set({ user: email, isAuthenticated: true });
+        } else {
+          console.error("Login failed: User data and token are required");
         }
       },
 
       // Logout function
       logout: () => {
+        localStorage.removeItem("authToken"); // Clear token on logout
         set({ user: null, isAuthenticated: false });
       },
     }),
     {
-      name: "user-storage", // Unique name for the storage in localStorage
-      getStorage: () => localStorage, // You can customize this if you want to use sessionStorage or another storage solution
+      name: "user-storage",
+      getStorage: () => localStorage,
     }
   )
 );

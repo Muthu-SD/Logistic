@@ -189,6 +189,7 @@ src/
 │   ├── Login.jsx
 │   ├── SignUp.jsx
 ├── components/
+│   ├── Button.js
 ├── context/
 │   ├── ThemeContext.jsx
 ├── layouts/
@@ -197,13 +198,19 @@ src/
 ├── pages/
 │   ├── Dashboard.jsx
 ├── routes/
-│   ├── Routes.js
+│   ├── AppRoutes.js
 │   ├── ProtectedRoute.js
 ├── store/
 │   ├── UseStore.js
 ├── styles/
 │   ├── auth/ 
 │   │   ├── AuthForm.module.css
+│   ├── Dashboard.module.css
+│   ├── DashboardCard.module.css
+│   ├── Header.module.css
+│   ├── Sidebar.module.css
+├── theme/
+│   ├── Theme.js
 ├── App.css
 ├── App.js
 ├── index.css

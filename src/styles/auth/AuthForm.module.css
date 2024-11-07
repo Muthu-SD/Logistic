@@ -27,14 +27,18 @@
   width: 80%;
   margin-top: 2rem;
 }
-.illustrator{
+.illustrator {
   border-radius: 6px;
 }
 .formWrapper {
   width: 50%;
 }
 .formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
+  height: 100%;
   color: white;
   background-color: var(--bg);
   padding: 30px;
