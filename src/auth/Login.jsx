@@ -28,7 +28,7 @@ const Login = () => {
       if (values.email === "Admin@albs.com" && values.password === "Admin@123") {
         login({ email: values.email });
         message.success("Login successful!");
-        navigate("/"); // Navigate to dashboard after successful login
+        navigate("/dashboard"); // Navigate to dashboard after successful login
       } else {
         message.error("Invalid credentials");
       }

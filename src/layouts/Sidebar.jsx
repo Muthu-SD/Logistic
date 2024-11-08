@@ -1,22 +1,35 @@
-import React from "react";
-import { Menu, Button } from "antd";
-import {
-  UserOutlined,
-  CheckCircleOutlined,
-  CarOutlined,
-} from "@ant-design/icons";
+import React, { useState } from "react";
+import { Button } from "antd";
+import { NavLink } from "react-router-dom";
+import { PieChartOutlined, FileDoneOutlined } from "@ant-design/icons";
+import { FaShippingFast } from "react-icons/fa";
 import styles from "../styles/Sidebar.module.css";
 import useStore from "../store/UseStore";
 import logo from "../assets/Logo2.png";
 import { useTheme } from "../context/ThemeContext";
 
-const Sidebar = ({ selectedKey, setSelectedKey }) => {
-  const { theme } = useTheme();
-  const handleMenuClick = (e) => {
-    setSelectedKey(e.key);
-  };
+const navItems = [
+  {
+    path: "/dashboard",
+    label: "Dashboard",
+    icon: <PieChartOutlined />,
+  },
+  {
+    path: "/supplier-clearance",
+    label: "Supplier Clearance",
+    icon: <FileDoneOutlined />,
+  },
+  { 
+    path: "/shipping-status",
+    label: "Shipping Status",
+    icon: <FaShippingFast />,
+  },
+];
 
+const Sidebar = () => {
+  const { theme } = useTheme();
   const { logout } = useStore();
+  const [selectedKey, setSelectedKey] = useState("/dashboard");
 
   return (
     <div
@@ -26,61 +39,34 @@ const Sidebar = ({ selectedKey, setSelectedKey }) => {
       <div className={styles.logoContainer}>
         <img src={logo} alt="Logo" className={styles.logo} />
       </div>
-      <Menu
-        mode="inline"
-        selectedKeys={[selectedKey]}
-        onClick={handleMenuClick}
-        style={{ height: "100%" }}
-      >
-        <Menu.Item
-          key="1"
-          icon={<CheckCircleOutlined />}
-          style={{
-            backgroundColor:
-              selectedKey === "1"
-                ? theme.component.menuItem.backgroundColor1
-                : theme.component.menuItem.backgroundColor2,
-                color:
-                selectedKey === "1"
-                  ? theme.component.menuItem.color1
-                  : theme.component.menuItem.color2,
-          }}
-        >
-          Dashboard
-        </Menu.Item>
-        <Menu.Item
-          key="2"
-          icon={<CarOutlined />}
-          style={{
-            backgroundColor:
-              selectedKey === "2"
-                ? theme.component.menuItem.backgroundColor1
-                : theme.component.menuItem.backgroundColor2,
-                color:
-                selectedKey === "2"
-                  ? theme.component.menuItem.color1
-                  : theme.component.menuItem.color2,
-          }}
-        >
-          Supplier Clearance 
-        </Menu.Item>
-        <Menu.Item
-          key="3"
-          icon={<UserOutlined />}
-          style={{
-            backgroundColor:
-              selectedKey === "3"
-                ? theme.component.menuItem.backgroundColor1
-                : theme.component.menuItem.backgroundColor2,
-            color:
-              selectedKey === "3"
-                ? theme.component.menuItem.color1
-                : theme.component.menuItem.color2,
-          }}
-        >
-          Shipping Status
-        </Menu.Item>
-      </Menu>
+      <ul className={styles.navLinks}>
+        {navItems.map((item) => {
+          const isActive = selectedKey === item.path;
+          const itemStyle = {
+            backgroundColor: isActive
+              ? theme.component.menuItem.backgroundColor1
+              : theme.component.menuItem.backgroundColor2,
+            color: isActive
+              ? theme.component.menuItem.color1
+              : theme.component.menuItem.color2,
+          };
+
+          return (
+            <li key={item.path} className={styles.navItem}>
+              <NavLink
+                to={item.path}
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.activeLink : ""}`
+                }
+                onClick={() => setSelectedKey(item.path)}
+                style={itemStyle} // Apply dynamic item style
+              >
+                {item.icon} <span>{item.label}</span>
+              </NavLink>
+            </li>
+          );
+        })}
+      </ul>
       <Button onClick={logout} className={styles.signOut}>
         Sign Out
       </Button>

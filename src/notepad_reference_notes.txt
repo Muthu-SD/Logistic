@@ -189,6 +189,10 @@ src/
 │   ├── Login.jsx
 │   ├── SignUp.jsx
 ├── components/
+│   ├── Button.js
+│   ├── DonutChart.js
+│   ├── PolarChart.js
+│   ├── LineChart.js
 ├── context/
 │   ├── ThemeContext.jsx
 ├── layouts/

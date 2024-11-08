@@ -1,9 +1,8 @@
 // Dashboard.js
 import React from "react";
-import DashboardCard from "../components/DashboardCard";
+import DashboardCard from "../../components/DashboardCard";
 
 const DashboardSidemenu = () => {
-
   return (
     <div>
       {/* Dashboard Cards */}
@@ -37,7 +36,7 @@ const DashboardSidemenu = () => {
             progress={60} // Adjust progress as needed
           />
         </div>
-      </div>          
+      </div>
     </div>
   );
 };

@@ -37,11 +37,10 @@ const Header = ({ onImport }) => {
       />
       <div style={{ display: "flex" }}>
         <div className={styles.themeIcon} onClick={toggleTheme}>
-          {/* <ThunderboltFilled /> */}
           <RxBlendingMode />
         </div>
         <Dropdown overlay={menu} trigger={["click"]}>
-          <Avatar icon={<UserOutlined />} />
+          <Avatar icon={<UserOutlined />} style={{cursor:"pointer"}}/>
         </Dropdown>
       </div>
       <ImportModal visible={modalVisible} onClose={() => setModalVisible(false)} onDataImport={onImport}/> {/* Modal for import */}
