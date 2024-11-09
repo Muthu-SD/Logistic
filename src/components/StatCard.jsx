@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/Dashboard.module.css";
 
-const DashboardCard = ({ title, value, icon, color, progress }) => {
+const StatCard = ({ title, value, icon, color, progress }) => {
   return (
     <div className={styles.dashboardCard}>
       <div className={styles.cardHeader}>
@@ -21,4 +21,4 @@ const DashboardCard = ({ title, value, icon, color, progress }) => {
   );
 };
 
-export default DashboardCard;
+export default StatCard;

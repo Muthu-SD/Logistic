@@ -1,17 +1,19 @@
 @import url(".././index.css");
 
-.sidebarContainer{
-display: flex;
-height: 100vh;  
-width: 100vw;
+.sidebarContainer {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
 }
 
-.headerContainer{
-    margin-left: 230px;
-    padding: 20px;
-    flex: 1;
+.headerContainer {
+  margin-left: 230px;
+  padding: 20px;
+  flex: 1;
+  /* background-color:var(--layout-background); */
 }
 
-.outletContainer{
-    max-width: 1200px;
+.outletContainer {
+  max-width: 1200px;
+  background-color:var(--layout-background);
 }

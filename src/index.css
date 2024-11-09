@@ -59,11 +59,14 @@ button {
   /* SIGNOUT BUTTON*/
   --btn-signout-hover: #313030;
   /* THEME COLOR*/
+  /* LAYOUT BACKGROUND */
+  --layout-background:#F0F4EF;
   /* SIDEBAR */
   --sidebar-bg: #a5a5a5;
   --sidebar-menu-bg1: #101820;
   --sidebar-menu-bg2: transparent;
   --siebar-menu-text: #222222;
+  
 }
 /* ------------------------------------------ custom colors for Dashboard-app --> END ------------------------------------ */
 

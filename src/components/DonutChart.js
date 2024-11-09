@@ -19,8 +19,8 @@ const DonutChart = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h3>Shipment Processing Method</h3>
-      <Chart options={options} series={series} type="donut" width="100%" height="70%"/>
+      <h5>Shipment Processing Method</h5>
+      <Chart options={options} series={series} type="donut" width="100%" height="100%"/>
     </div>
   );
 };

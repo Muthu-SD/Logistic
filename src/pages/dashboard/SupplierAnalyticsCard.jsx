@@ -2,13 +2,13 @@ import React from "react";
 import { Tabs } from "antd";
 import PolarChart from "../../components/PolarChart";
 import LineChart from "../../components/LineChart";
-import DashboardCardTwo from "../../components/DashboardCardTwo";
+import InfoCard from "../../components/InfoCard";
 
 const SupplierAnalyticsCard = () => {
   const { TabPane } = Tabs;
 
   return (
-    <DashboardCardTwo title="Supplier Info">
+    <InfoCard title="Supplier Info">
       <Tabs defaultActiveKey="1" tabPosition="bottom">
         <TabPane tab="Supplier Info" key="1">
           <PolarChart />
@@ -17,7 +17,7 @@ const SupplierAnalyticsCard = () => {
           <LineChart />
         </TabPane>
       </Tabs>
-    </DashboardCardTwo>
+    </InfoCard>
   );
 };
 export default SupplierAnalyticsCard;

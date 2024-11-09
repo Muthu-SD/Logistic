@@ -3,6 +3,9 @@ export const theme1 = {
     colorBgContainer:
       "linear-gradient(90deg, #628EFF 0%, #8740CD 52%, #580475 100%)",
   },
+  layoutBackground: {
+    backgroundColor: "var(--layout-background)",
+  },
   component: {
     input: {
       backgroundColor: "var(--primary-text)",
@@ -19,6 +22,9 @@ export const theme1 = {
 export const theme2 = {
   token: {
     colorBgContainer: "#A5A5A5",
+  },
+  layoutBackground: {
+    backgroundColor: "var(--layout-background)",
   },
   component: {
     input: {

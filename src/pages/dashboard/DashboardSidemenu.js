@@ -1,12 +1,12 @@
 // Dashboard.js
 import React from "react";
-import DashboardCard from "../../components/DashboardCard";
+import StatCard from "../../components/StatCard";
 
 const DashboardSidemenu = () => {
   return (
     <div>
       {/* Dashboard Cards */}
-      <div className="DashboardCardContainer" style={{ display: "flex" }}>
+      <div className="StatCardContainer" style={{ display: "flex" }}>
         <div
           style={{
             display: "flex",
@@ -14,21 +14,21 @@ const DashboardSidemenu = () => {
             justifyContent: "space-evenly",
           }}
         >
-          <DashboardCard
+          <StatCard
             title="Daily Sales"
             value="$2000.00"
             icon="📈"
             color="green"
             progress={75} // Adjust progress as needed
           />
-          <DashboardCard
+          <StatCard
             title="Raw Material"
             value="$1640.00"
             icon="📦"
             color="red"
             progress={30} // Adjust progress as needed
           />
-          <DashboardCard
+          <StatCard
             title="Storage Balance"
             value="40"
             icon="📦"
