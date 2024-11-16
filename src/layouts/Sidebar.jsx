@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "antd";
 import { NavLink } from "react-router-dom";
-import { PieChartOutlined, FileDoneOutlined } from "@ant-design/icons";
-import { FaShippingFast } from "react-icons/fa";
+import { PieChartOutlined, } from "@ant-design/icons";
+// import { FaShippingFast } from "react-icons/fa";
 import styles from "../styles/Sidebar.module.css";
 import useStore from "../store/UseStore";
 import logo from "../assets/Logo2.png";
@@ -10,26 +10,39 @@ import { useTheme } from "../context/ThemeContext";
 
 const navItems = [
   {
-    path: "/dashboard",
+    path: "/",
     label: "Dashboard",
     icon: <PieChartOutlined />,
   },
-  {
-    path: "/supplier-clearance",
-    label: "Supplier Clearance",
-    icon: <FileDoneOutlined />,
-  },
-  { 
-    path: "/shipping-status",
-    label: "Shipping Status",
-    icon: <FaShippingFast />,
-  },
+  // {
+  //   path: "/supplier-clearance",
+  //   label: "Supplier Clearance",
+  //   icon: <FileDoneOutlined />,
+  // },
+  // { 
+  //   path: "/shipping-status",
+  //   label: "Shipping Status",
+  //   icon: <FaShippingFast />,
+  // },
 ];
 
 const Sidebar = () => {
   const { theme } = useTheme();
   const { logout } = useStore();
-  const [selectedKey, setSelectedKey] = useState("/dashboard");
+  const [selectedKey, setSelectedKey] = useState("/");
+
+  useEffect(() => {
+    // Retrieve selectedKey from local storage on component mount
+    const storedKey = localStorage.getItem("selectedKey");
+    if (storedKey) {
+      setSelectedKey(storedKey);
+    }
+  }, []);
+
+  const handleSelectKey = (path) => {
+    setSelectedKey(path);
+    localStorage.setItem("selectedKey", path); // Store selectedKey in local storage
+  };
 
   return (
     <div
@@ -58,7 +71,8 @@ const Sidebar = () => {
                 className={({ isActive }) =>
                   `${styles.navLink} ${isActive ? styles.activeLink : ""}`
                 }
-                onClick={() => setSelectedKey(item.path)}
+                // onClick={() => setSelectedKey(item.path)}
+                onClick={() => handleSelectKey(item.path)}
                 style={itemStyle} // Apply dynamic item style
               >
                 {item.icon} <span>{item.label}</span>

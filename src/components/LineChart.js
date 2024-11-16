@@ -10,7 +10,7 @@ const LineChart = () => {
       },
     ],
     chart: {
-      height: 350,
+      // height: 350,
       type: "line",
       zoom: {
         enabled: false,
@@ -52,7 +52,7 @@ const LineChart = () => {
         options={options}
         series={options.series}
         type="line"
-        height={210}
+        height={235}
       />
     </div>
   );

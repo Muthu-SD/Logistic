@@ -35,7 +35,7 @@ const Header = ({ onImport }) => {
         placeholder="Search menu..."
         suffix={<SearchOutlined />}
       />
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex" , alignItems:"center"}}>
         <div className={styles.themeIcon} onClick={toggleTheme}>
           <RxBlendingMode />
         </div>

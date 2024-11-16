@@ -1,15 +1,17 @@
 // DonutChart.js
 import React from "react";
 import Chart from "react-apexcharts";
+import { useTheme } from "../context/ThemeContext";
 
 const DonutChart = () => {
+  const { theme } = useTheme();
   // Configuration for the donut chart
   const options = {
     chart: {
       type: "donut",
     },
     labels: ["DPD (Direct Port Delivery)", "Other"],
-    colors: ["#2E93fA", "#66DA26"], // Custom colors for segments
+    colors:[ theme.component.donutChart.color1 , theme.component.donutChart.color2], // Custom colors for segments
     legend: {
       position: "bottom",
     },

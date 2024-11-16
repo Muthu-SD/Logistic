@@ -125,7 +125,7 @@ const SupplierClearance = () => {
 
 
   return (
-    <div style={{ minHeight: "100vh" }} className={styles.dashboard}>
+    <div  className={styles.dashboard}>
         <div style={{ margin: "24px 16px 0", padding: 24 }}>
             <div>
               <h3>Supplier Clearance</h3>

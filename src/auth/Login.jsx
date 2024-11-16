@@ -1,6 +1,6 @@
 // src/components/Login.js
 import React, { useState } from "react";
-import { Form, Input, Button, message} from "antd";
+import { Form, Input, Button, message } from "antd";
 import { useNavigate, Link } from "react-router-dom";
 import useStore from "../store/UseStore";
 import Styles from "../styles/auth/AuthForm.module.css";
@@ -25,10 +25,13 @@ const Login = () => {
     setLoading(true);
     try {
       // Mock authentication (replace with actual API call)
-      if (values.email === "Admin@albs.com" && values.password === "Admin@123") {
+      if (
+        values.email === "Admin@albs.com" &&
+        values.password === "Admin@123"
+      ) {
         login({ email: values.email });
         message.success("Login successful!");
-        navigate("/dashboard"); // Navigate to dashboard after successful login
+        navigate("/"); // Navigate to dashboard after successful login
       } else {
         message.error("Invalid credentials");
       }
@@ -72,10 +75,12 @@ const Login = () => {
               name="email"
               rules={[{ required: true, message: "Please input your email!" }]}
             >
-              <Input type="email" placeholder="Email" 
-              style={{
-                background: theme.component.input.backgroundColor,
-              }}
+              <Input
+                type="email"
+                placeholder="Email"
+                style={{
+                  background: theme.component.input.backgroundColor,
+                }}
               />
             </Form.Item>
             <Form.Item
@@ -84,10 +89,11 @@ const Login = () => {
                 { required: true, message: "Please input your password!" },
               ]}
             >
-              <Input.Password placeholder="Password"
-              style={{
-                background: theme.component.input.backgroundColor,
-              }}
+              <Input.Password
+                placeholder="Password"
+                style={{
+                  background: theme.component.input.backgroundColor,
+                }}
               />
             </Form.Item>
             <Form.Item style={{ textAlign: "center" }}>

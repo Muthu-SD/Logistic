@@ -45,7 +45,8 @@ button {
   --btn-primary: #efefe4;
   --btn-hover: #e67e6e;
   --btn-succes: green;
-  --gradient: linear-gradient(45deg, #8226f5 0%, #e625ea 100%) !important;
+  --gradient1: linear-gradient(90deg, #628EFF 0%, #8740CD 52%, #580475 100%);
+  --gradient2:#A5A5A5;
   --color-pink-bg: pink;
   --color-pink-text: rgb(168, 168, 168);
   --color-red-bg: rgb(255, 18, 58);
@@ -66,7 +67,11 @@ button {
   --sidebar-menu-bg1: #101820;
   --sidebar-menu-bg2: transparent;
   --siebar-menu-text: #222222;
-  
+  /* DonutChart */
+  --donut-chart-color1_t1:#8740CD;
+  --donut-chart-color2_t1:#628EFF;
+  --donut-chart-color1_t2:#344966;
+  --donut-chart-color2_t2:#B8B8B8;
 }
 /* ------------------------------------------ custom colors for Dashboard-app --> END ------------------------------------ */
 
@@ -99,4 +104,12 @@ button {
   .ant-table-wrapper
   .ant-table-cell-scrollbar {
   box-shadow: none !important;
+}
+
+.ant-card-body{
+  padding: 0 !important;
+}
+
+.ant-tabs-nav-wrap{
+  background-color: "yellow","";
 }

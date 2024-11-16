@@ -14,7 +14,7 @@ const AppRoutes = () => {
       {/* Protected route for authenticated users */}
       <Route path="/" element={<ProtectedRoute element={<MainLayout />} />}>
         {/* Route for dashboard */}
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route index element={<Dashboard />} />
         {/* Route for supplier-clearance */}
         <Route path="/supplier-clearance" element={<SupplierClearance />} />
         {/* Route for shipping-status */}
