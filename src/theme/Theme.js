@@ -23,6 +23,18 @@ export const theme1 = {
       color1: "var(--donut-chart-color1_t1)",
       color2: "var(--donut-chart-color2_t1)",
     },
+    stackedChart1:{
+      color1: "var(--stackedGraph1-color1_t1)",
+      color2: "var(--stackedGraph1-color2_t1)",
+      color3: "var(--stackedGraph1-color3_t1)",
+    },
+    stackedChart2:{
+      color1: "var(--stackedGraph2-color1_t1)",
+      color2: "var(--stackedGraph2-color2_t1)",
+      color3: "var(--stackedGraph2-color3_t1)",
+      color4: "var(--stackedGraph2-color4_t1)",
+      color5: "var(--stackedGraph2-color5_t1)",
+    },
   },
 };
 
@@ -49,6 +61,18 @@ export const theme2 = {
     donutChart:{
       color1: "var(--donut-chart-color1_t2)",
       color2: "var(--donut-chart-color2_t2)",
+    },
+    stackedChart1:{
+      color1: "var(--stackedGraph1-color1_t2)",
+      color2: "var(--stackedGraph1-color2_t2)",
+      color3:"var(--stackedGraph1-color3_t2)",
+    },
+    stackedChart2:{
+      color1: "var(--stackedGraph2-color1_t2)",
+      color2: "var(--stackedGraph2-color2_t2)",
+      color3: "var(--stackedGraph2-color3_t2)",
+      color4: "var(--stackedGraph2-color4_t2)",
+      color5: "var(--stackedGraph2-color5_t2)",
     },
   },
 };

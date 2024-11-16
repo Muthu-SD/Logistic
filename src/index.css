@@ -12,6 +12,7 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden;
   font-family: "Roboto", sans-serif; /* Google font link is in html */
+  background-color:var(--layout-background);
 }
 
 img {
@@ -72,6 +73,26 @@ button {
   --donut-chart-color2_t1:#628EFF;
   --donut-chart-color1_t2:#344966;
   --donut-chart-color2_t2:#B8B8B8;
+  /* StackedGraph_1 */
+  --stackedGraph1-color1_t1:#79F2B9;
+  --stackedGraph1-color2_t1:#ef4bc0dc;
+  --stackedGraph1-color3_t1:#8740CD;
+  /* --stackedGraph1-color3_t1:linear-gradient(circle, #60F2F2 0%, #10ADD0 100%); */
+  --stackedGraph1-color1_t2:#4084B3;
+  --stackedGraph1-color2_t2:#B4CDED;
+  --stackedGraph1-color3_t2:#919191;
+  /* StackedGraph_2 */
+  --stackedGraph2-color1_t1:#008FFB;
+  --stackedGraph2-color2_t1:#00E396;
+  --stackedGraph2-color3_t1:#FEB019;
+  --stackedGraph2-color4_t1:#DC143C;
+  --stackedGraph2-color5_t1:#3357FF;
+  /* --stackedGraph2-color3_t1:linear-gradient(circle, #60F2F2 0%, #10ADD0 100%); */
+  --stackedGraph2-color1_t2:#FF5733;
+  --stackedGraph2-color2_t2:#33FF57;
+  --stackedGraph2-color3_t2:#3357FF;
+  --stackedGraph2-color4_t2:#919191;
+  --stackedGraph2-color5_t2:#B4CDED;
 }
 /* ------------------------------------------ custom colors for Dashboard-app --> END ------------------------------------ */
 
