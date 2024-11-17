@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "antd";
 import { NavLink } from "react-router-dom";
-import { FileDoneOutlined, PieChartOutlined, } from "@ant-design/icons";
+import {  PieChartOutlined, } from "@ant-design/icons";
 // import { FaShippingFast } from "react-icons/fa";
 import styles from "../styles/Sidebar.module.css";
 import useStore from "../store/UseStore";
@@ -14,11 +14,11 @@ const navItems = [
     label: "Dashboard",
     icon: <PieChartOutlined />,
   },
-  {
-    path: "/supplier-clearance",
-    label: "Supplier Clearance",
-    icon: <FileDoneOutlined />,
-  },
+  // {
+  //   path: "/supplier-clearance",
+  //   label: "Supplier Clearance",
+  //   icon: <FileDoneOutlined />,
+  // },
   // { 
   //   path: "/shipping-status",
   //   label: "Shipping Status",
