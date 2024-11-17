@@ -43,7 +43,6 @@ const DonutChart2 = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h5>Total</h5>
       <Chart options={options} series={series} type="donut" width="100%" height="100%" />
     </div>
   );

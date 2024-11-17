@@ -7,7 +7,7 @@ import DonutChart2 from "../../components/DonutChart2";
 // import { useTheme } from "../../context/ThemeContext";
 import StackedGraph from "../../components/StackedGraph";
 import StackedGraph2 from "../../components/StackedGraph_2";
-import SupplierClearance from "../SupplierClearance";
+import TrackingTable from "../../components/TrackingTable";
 const Dashboard = () => {
   //   const { theme } = useTheme();
 
@@ -15,24 +15,24 @@ const Dashboard = () => {
     <div style={{ padding: "20px" }}>
       <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
         <Col span={24}>
-          <InfoCard>
+          <InfoCard title="Pending">
             <StackedGraph2 />
           </InfoCard>
         </Col>
         <Col span={18}>
-          <InfoCard>
+          <InfoCard title="Cleared">
             <StackedGraph />
           </InfoCard>
         </Col>
         <Col span={6}>
-          <InfoCard>
+          <InfoCard title="Total">
             <DonutChart2 />
           </InfoCard>
         </Col>
 
         <Col span={24}>
-          <InfoCard>
-            <SupplierClearance />
+          <InfoCard title="Tracking">
+            <TrackingTable />
           </InfoCard>
         </Col>
       </Row>

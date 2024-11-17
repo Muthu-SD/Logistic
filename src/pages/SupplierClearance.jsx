@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "antd";
-import styles from "../styles/Dashboard.module.css";
+// import styles from "../styles/Dashboard.module.css";
 
 
 const supplierData = [
@@ -125,10 +125,10 @@ const SupplierClearance = () => {
 
 
   return (
-    <div  className={styles.dashboard}>
-        <div style={{ margin: "24px 16px 0", padding: 24 }}>
+    <div  style={{marginTop:"1rem"}} >
+        <div >
             <div>
-              <h3>Supplier Clearance</h3>
+              {/* <h3>Supplier Clearance</h3> */}
               <Table
                 columns={columns}
                 dataSource={supplierData}

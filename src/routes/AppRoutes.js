@@ -1,29 +1,73 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import Login from "../auth/Login";
-import SignUp from "../auth/SignUp";
-import Dashboard from "../pages/dashboard/Dashboard";
 import ProtectedRoute from "./protected-route";
-import SupplierClearance from "../pages/SupplierClearance";
-import ShippingStatus from "../pages/ShippingStatus";
-import MainLayout from ".././layouts/MainLayout";
+import MainLayout from "../layouts/MainLayout";
+
+// Lazy loading components
+const Login = lazy(() => import("../auth/Login"));
+const SignUp = lazy(() => import("../auth/SignUp"));
+const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
+const SupplierClearance = lazy(() => import("../pages/SupplierClearance"));
+const ShippingStatus = lazy(() => import("../pages/ShippingStatus"));
 
 const AppRoutes = () => {
   return (
     <Routes>
       {/* Protected route for authenticated users */}
-      <Route path="/" element={<ProtectedRoute element={<MainLayout />} />}>
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<div>Loading Main Layout...</div>}>
+            <ProtectedRoute element={<MainLayout />} />
+          </Suspense>
+        }
+      >
         {/* Route for dashboard */}
-        <Route index element={<Dashboard />} />
+        <Route
+          index
+          element={
+            <Suspense fallback={<div>Loading Dashboard...</div>}>
+              <Dashboard />
+            </Suspense>
+          }
+        />
         {/* Route for supplier-clearance */}
-        <Route path="/supplier-clearance" element={<SupplierClearance />} />
+        <Route
+          path="/supplier-clearance"
+          element={
+            <Suspense fallback={<div>Loading Supplier Clearance...</div>}>
+              <SupplierClearance />
+            </Suspense>
+          }
+        />
         {/* Route for shipping-status */}
-        <Route path="/shipping-status" element={<ShippingStatus />} />
+        <Route
+          path="/shipping-status"
+          element={
+            <Suspense fallback={<div>Loading Shipping Status...</div>}>
+              <ShippingStatus />
+            </Suspense>
+          }
+        />
       </Route>
       {/* Route for sign up */}
-      <Route path="/signup" element={<SignUp />} />
+      <Route
+        path="/signup"
+        element={
+          <Suspense fallback={<div>Loading Sign Up...</div>}>
+            <SignUp />
+          </Suspense>
+        }
+      />
       {/* Route for login */}
-      <Route path="/login" element={<Login />} />
+      <Route
+        path="/login"
+        element={
+          <Suspense fallback={<div>Loading Login...</div>}>
+            <Login />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 };

@@ -4,6 +4,31 @@ import { useTheme } from ".././context/ThemeContext";
 import { DatePicker, Button } from "antd"; // Ant Design components
 import dayjs from "dayjs"; // For date formatting
 
+import styled from "styled-components";
+
+
+const StyledDatePickerWrapper = styled.div`
+  .ant-picker-panel-container.ant-picker-month-panel-container {
+    width: 70% !important;
+    height: 40vh !important;
+  }
+
+  .ant-picker-content {
+    width: 70% !important;
+    height: 32vh !important;
+  }
+
+  .ant-picker-header {
+    width: 70% !important;
+  }
+`;
+
+const StyledDatePickerInput = styled(DatePicker)`
+  background: ${(props) => props.bgColor || "#fff"} !important;
+  width: 100px;
+  border-radius: 4px;
+`;
+
 const StackedGraph = ({ colors }) => {
   const { theme } = useTheme();
   const [filteredMonth, setFilteredMonth] = useState(null);
@@ -70,6 +95,14 @@ const StackedGraph = ({ colors }) => {
       },
       xaxis: {
         categories: chartData.categories, // Filtered categories
+        title: {
+          text: "Values",
+        },
+      },
+      yaxis: {
+        title: {
+          text: "Months", // Representing the data fields
+        },
       },
       plotOptions: {
         bar: {
@@ -81,7 +114,7 @@ const StackedGraph = ({ colors }) => {
         opacity: 1,
       },
       legend: {
-        position: "top",
+        position: "bottom",
         horizontalAlign: "left",
       },
       colors: colors || [
@@ -105,18 +138,18 @@ const StackedGraph = ({ colors }) => {
           gap: "8px",
         }}
       >
-        <DatePicker
+       <StyledDatePickerWrapper>
+       <StyledDatePickerInput
           picker="month"
           value={filteredMonth} // Bind the state to the DatePicker value
           onChange={(date) => setFilteredMonth(date)}
           placeholder="Filter by Month"
           style={{
             background: theme.component.input.backgroundColor,
-            fontSize: "12px", // Reduce font size
-            // padding: "5px", // Reduce padding
-            // width: "150px", // Adjust the width if needed
           }}
+          getPopupContainer={(trigger) => trigger.parentElement} // Ensures styles are applied to the dropdown
         />
+         </StyledDatePickerWrapper>
         <Button
           type="default"
           onClick={() => {
