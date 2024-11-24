@@ -1,7 +1,7 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
 
-const DonutChart = ({ chartData, chartTitle }) => {
+const DonutChartGradient = ({ chartData, chartTitle }) => {
     const chartOptions = {
         chart: {
             type: 'donut',
@@ -9,11 +9,15 @@ const DonutChart = ({ chartData, chartTitle }) => {
         labels: chartData.map(item => item.label), // dynamically setting labels
         plotOptions: {
             pie: {
-                donut: {
-                    size: '50%',
-                },
+                size: '50%',
             },
         },
+        dataLabels: {
+            enabled: false
+          },
+        fill: {
+            type: 'gradient',
+          },
         legend: {
             position: 'bottom',
         },
@@ -44,4 +48,4 @@ const DonutChart = ({ chartData, chartTitle }) => {
     );
 };
 
-export default DonutChart;
+export default DonutChartGradient;

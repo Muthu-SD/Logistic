@@ -4,12 +4,64 @@ import InfoCard from "../../components/InfoCard";
 import { Col, Row } from "antd";
 // import styles from "../../styles/Dashboard.module.css";
 import DonutChart2 from "../../components/DonutChart2";
+import DonutChart from "../../components/DonutChart";
 // import { useTheme } from "../../context/ThemeContext";
 import StackedGraph from "../../components/StackedGraph";
 import StackedGraph2 from "../../components/StackedGraph_2";
 import TrackingTable from "../../components/TrackingTable";
+import DonutChartGradient from "../../components/DonutChartGradient";
 const Dashboard = () => {
-  //   const { theme } = useTheme();
+    // const { isThemeOne } = useTheme();
+
+  // Data for Donut (Product Type Breakdown)
+  const productData = [
+    { label: "L LYSINE MONOHYDROCHOLORIDE 98.5%", value: 1106.09 },
+    { label: "L LYSINE MONOHYDROCHOLORIDE 99%", value: 24.3 },
+    { label: "L LYSINE SULPHATE", value: 164.99 },
+    { label: "L METHONINE", value: 19.38 },
+    { label: "L THREONINE", value: 81.52 },
+  ];
+
+    // Data for Donut (Supplier Type Breakdown)
+    const supplierData = [
+    { label: "JIANGXI KELAM", value: 54 },
+    { label: "ARSHINE LIFESCIENCE", value: 248 },
+    { label: "BEYRON LTD", value: 27 },
+    { label: "CJ BIO MALAYSIN", value: 19 },
+    { label: "CJ CHEILJEDANG", value: 18 },
+    { label: "DAESANG CORPORATION", value: 255 },
+    { label: "ECO NUTRITION", value: 27 },
+    { label: "ECO NUTRITION", value: 192 },
+    { label: "GOLDEN GAIN GROUP HK LTD", value: 473 },
+    { label: "SHANDONG GOLDEN", value: 27 },
+    { label: "SHANGHAI NUVIT", value: 56 },
+    { label: "Grand Total", value: 1396 },
+  ];
+
+ // Data for Donut (Origin Type Breakdown)
+  const originData = [
+    { label: "DALIAN /CHINA", value: 811 },
+    { label: "KWANGYANG/KOREA", value: 145 },
+    { label: "PORTKELANG/MALAYSIA", value: 19 },
+    { label: "QINGDAO/CHINA", value: 45 },
+    { label: "SHANGHAI/CHINA", value: 27 },
+    { label: "SURABAYA /INDONESIA", value: 18 },
+    { label: "TIANJIN/CHINA", value: 193 },
+    { label: "XINGANG/CHINA", value: 138 },
+    { label: "Grand Total", value: 1396 },
+  ];
+
+   // Data for Donut (Shipment Processing Method Type Breakdown)
+    const processingMethodData = [
+    { label: "ALL CARGO", value: 2 },
+    { label: "CONTINENTAL CFS", value:1  },
+    { label: "DPD", value: 13 },
+    { label: "SANCO CFS", value: 36 },
+    { label: "Grand Total", value:52  },
+  ];
+
+  // Define the component to render for Product Data based on the theme
+  // const ProductDataDonut = isThemeOne === "theme1" ? DonutChartGradient : DonutChart;
 
   return (
     <div style={{ padding: "20px" }}>
@@ -19,17 +71,53 @@ const Dashboard = () => {
             <StackedGraph2 />
           </InfoCard>
         </Col>
-        <Col span={18}>
+        {/* Cleared Section */}
+        <Col span={12}>
+          <Row gutter={[0, 0]}>
+          <Col span={24}>
           <InfoCard title="Cleared">
             <StackedGraph />
           </InfoCard>
         </Col>
-        <Col span={6}>
+
+        <Col span={24}>
           <InfoCard title="Total">
             <DonutChart2 />
           </InfoCard>
         </Col>
+        </Row>
+        </Col>
+        {/* Donut Charts Section */}
+        <Col span={12}>
+          <Row gutter={[0, 0]}>
+          <Col span={24}>
+            <InfoCard >
+            <DonutChart chartTitle="Shipment Processing Method" chartData={processingMethodData}/>
+          </InfoCard>
+        </Col>
 
+            <Col span={24}>
+            <InfoCard >
+            <DonutChart chartTitle="Origin Data" chartData={originData}/>
+          </InfoCard>
+        </Col>
+          </Row>
+        </Col>
+
+        <Col span={12}>
+          <InfoCard >
+            <DonutChart chartTitle="Supplier Data" chartData={supplierData}/>
+          </InfoCard>
+        </Col>
+
+        <Col span={12}>
+          <InfoCard >
+             {/* Conditionally render the Product Data donut chart */}
+            <DonutChartGradient chartTitle="Product Data" chartData={productData}/>
+          </InfoCard>
+        </Col>
+
+        {/* Tracking Section */}
         <Col span={24}>
           <InfoCard title="Tracking">
             <TrackingTable />
@@ -118,7 +206,7 @@ export default Dashboard;
 //       </Col>
 //       <Col xs={24} md={6}>
 //         <InfoCard>
-//           <DonutChart />
+//           <DonutChart3 />
 //         </InfoCard>
 //       </Col>
 //     </Row>

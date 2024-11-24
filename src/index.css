@@ -68,31 +68,31 @@ button {
   --sidebar-menu-bg1: #101820;
   --sidebar-menu-bg2: transparent;
   --siebar-menu-text: #222222;
-  /* DonutChart */
+  /* DonutChart3 */
   --donut-chart-color1_t1: #8740cd;
   --donut-chart-color2_t1: #628eff;
   --donut-chart-color1_t2: #344966;
   --donut-chart-color2_t2: #b8b8b8;
   /* StackedGraph_1 */
-  --stackedGraph1-color1_t1: #79f2b9;
-  --stackedGraph1-color2_t1: #ef4bc0dc;
+  --stackedGraph1-color1_t1: rgba(255, 171, 189, 0.75);
+  --stackedGraph1-color2_t1:  rgba(255, 12, 216, 0.39);
   --stackedGraph1-color3_t1: #8740cd;
   /* --stackedGraph1-color3_t1:linear-gradient(circle, #60F2F2 0%, #10ADD0 100%); */
   --stackedGraph1-color1_t2: #4084b3;
   --stackedGraph1-color2_t2: #b4cded;
   --stackedGraph1-color3_t2: #919191;
   /* StackedGraph_2 */
-  --stackedGraph2-color1_t1: #008ffb;
-  --stackedGraph2-color2_t1: #00e396;
-  --stackedGraph2-color3_t1: #feb019;
-  --stackedGraph2-color4_t1: #dc143c;
-  --stackedGraph2-color5_t1: #3357ff;
+  --stackedGraph2-color1_t1: rgba(98, 142, 255, 0.8);
+  --stackedGraph2-color2_t1: rgba(135, 64, 205, 0.6);
+  --stackedGraph2-color3_t1: rgba(88, 4, 117, 0.7);
+  --stackedGraph2-color4_t1: rgba(141, 170, 244, 0.85);
+  --stackedGraph2-color5_t1: #0037d6;
   /* --stackedGraph2-color3_t1:linear-gradient(circle, #60F2F2 0%, #10ADD0 100%); */
-  --stackedGraph2-color1_t2: #ff5733;
-  --stackedGraph2-color2_t2: #33ff57;
-  --stackedGraph2-color3_t2: #3357ff;
-  --stackedGraph2-color4_t2: #919191;
-  --stackedGraph2-color5_t2: #b4cded;
+  --stackedGraph2-color1_t2: rgba(255, 85, 85, 0.8);
+  --stackedGraph2-color2_t2: rgba(85, 255, 85, 0.8);
+  --stackedGraph2-color3_t2: rgba(85, 85, 255, 0.8);
+  --stackedGraph2-color4_t2: rgba(170, 170, 170, 0.8);
+  --stackedGraph2-color5_t2: rgba(0, 0, 139, 0.8);  
 }
 /* ------------------------------------------ custom colors for Dashboard-app --> END ------------------------------------ */
 

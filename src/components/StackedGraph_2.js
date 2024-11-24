@@ -7,14 +7,11 @@ const StackedGraph = ({ colors }) => {
 
   // Extracted data from the table (filtered for numeric entries where needed)
   const data = {
-    pkgs: [5, 15, 5, 21, 6, 5, 1, 22, 48, 1, 13, 1, 10, 21, 4, 4],
-    grwt: [
-      247, 147, 790.7, 192, 145, 278, 171.39, 614, 307, 260, 822, 315, 633, 129,
-      840, 340,
-    ],
-    movedOn: [28, 29, 5, 10, 5, 10, 6, 10, 10, 10, 10, 10, 10, 10, 10, 10],
-    clearedOn: [4, 7, 11, 11, 11, 12, 12, 13, 13, 18, 18, 18, 18, 18, 18, 18],
-    delayedBy: [3, 0, 2, 2, 3, 3, 3, 0, 0, 7, 4, 7, 5, 0, 3, 4],
+    pkgs: [5, 15, 5, 21, 6, 5, 3, 22, 48, 7],
+    grwt: [247, 147, 790.7, 192, 145, 278, 171.39, 614, 307, 260],
+    movedOn: [28, 29, 5, 10, 5, 10, 6, 10, 10, 10],
+    clearedOn: [4, 7, 11, 11, 11, 12, 12, 13, 13, 18],
+    delayedBy: [3, 0, 2, 2, 3, 3, 3, 0, 0, 7],
   };
 
   const stackedChartData = {
@@ -56,12 +53,10 @@ const StackedGraph = ({ colors }) => {
           "LINING",
           "PLATE CLUTCH INNER&OUTER",
           "LINING MACHINING",
-          // "RIVETS",
-          // "ALUMINIUM BARS",
-          // "ALUMINIUM INGOT",
-          // "CYLINDRICAL ROLLER",
-          // "BUSHING",
-          // "LINING",
+          "RIVETS",
+          "ALUMINIUM BARS",
+          "ALUMINIUM INGOT",
+          "CYLINDRICAL ROLLER",
         ],
         title: {
           text: "Values",
@@ -75,15 +70,25 @@ const StackedGraph = ({ colors }) => {
       plotOptions: {
         bar: {
           horizontal: true,
-          borderRadius: 4,
+          borderRadius: 5,
         },
       },
       fill: {
         opacity: 1,
-      },
+        },
+        // tooltip: {
+        //   shared: true,
+        //   intersect: false,
+        //   y: {
+        //     formatter: (value) => `${value}`, // Display value with 'units'
+        //   },
+        // },
       legend: {
         position: "bottom",
         horizontalAlign: "left",
+        // labels: {
+        //   useSeriesColors: true, // Ensure colors are consistent with the bars
+        // },
       },
       colors: colors || [
         theme.component.stackedChart2.color1,
@@ -92,6 +97,23 @@ const StackedGraph = ({ colors }) => {
         theme.component.stackedChart2.color4,
         theme.component.stackedChart2.color5,
       ],
+
+    //   grid: {
+    //     show: true,
+    //     borderColor: '#e0e0e0',
+    //     strokeDashArray: 4,
+    //     xaxis: {
+    //       lines: {
+    //         show: true, // Show lines on the x-axis for better readability
+    //       },
+    //     },
+      
+    //   yaxis: {
+    //     lines: {
+    //       show: true, // Show lines on the y-axis for better readability
+    //     },
+    //   },
+    // },
     },
   };
 

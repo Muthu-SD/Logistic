@@ -72,10 +72,16 @@ const columns = (theme) => [
       confirm,
       clearFilters,
     }) => (
-      <div style={{ padding: 8 }}>
+      <div
+        style={{
+          padding: 8,
+        }}
+      >
         <Select
           showSearch
-          style={{ width: 150 }}
+          style={{
+            width: 150,
+          }}
           placeholder="Select Month"
           onChange={(value) => setSelectedKeys([value])}
           value={selectedKeys[0]}

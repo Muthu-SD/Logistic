@@ -166,7 +166,7 @@ const StackedGraph = ({ colors }) => {
         options={stackedChartData.options}
         series={stackedChartData.series}
         type="bar"
-        height={350}
+        height={400}
       />
     </div>
   );

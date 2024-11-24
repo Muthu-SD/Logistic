@@ -806,3 +806,258 @@ const Dashboard = () => {
 
 export default Dashboard;
 
+color_reference :-
+
+/* StackedGraph_1 */
+  --stackedGraph1-color1_t1: #79f2b9;
+  --stackedGraph1-color2_t1: #ef4bc0dc;
+  --stackedGraph1-color3_t1: #8740cd;
+  /* --stackedGraph1-color3_t1:linear-gradient(circle, #60F2F2 0%, #10ADD0 100%); */
+  --stackedGraph1-color1_t2: #4084b3;
+  --stackedGraph1-color2_t2: #b4cded;
+  --stackedGraph1-color3_t2: #919191;
+  /* StackedGraph_2 */
+  --stackedGraph2-color1_t1: #008ffb;
+  --stackedGraph2-color2_t1: #00e396;
+  --stackedGraph2-color3_t1: #feb019;
+  --stackedGraph2-color4_t1: #dc143c;
+  --stackedGraph2-color5_t1: #3357ff;
+  /* --stackedGraph2-color3_t1:linear-gradient(circle, #60F2F2 0%, #10ADD0 100%); */
+  --stackedGraph2-color1_t2: #ff5733;
+  --stackedGraph2-color2_t2: #33ff57;
+  --stackedGraph2-color3_t2: #3357ff;
+  --stackedGraph2-color4_t2: #919191;
+  --stackedGraph2-color5_t2: #b4cded;
+
+
+  donutChart.js:-(Dynamic code)
+
+  import React from 'react';
+import ApexCharts from 'react-apexcharts';
+
+const DonutChart = ({ chartData, chartTitle }) => {
+    const chartOptions = {
+        chart: {
+            type: 'donut',
+        },
+        labels: chartData.map(item => item.label), // dynamically setting labels
+        plotOptions: {
+            pie: {
+                donut: {
+                    size: '50%',
+                },
+            },
+        },
+        legend: {
+            position: 'bottom',
+        },
+        tooltip: {
+            y: {
+                formatter: (val) => `${val} Tons`,
+            },
+        },
+        colors: [
+            '#00E396', '#FF4560', '#775DD0', '#FEB019', '#FF66B2', 
+            '#28B9B5', '#FFB6C1', '#00B8D4', '#9C27B0', '#FF9800', 
+            '#8BC34A', '#E91E63'
+          ]
+    };
+
+    const chartSeries = chartData.map(item => item.value);
+
+    return (
+        <div className="donut-chart">
+            <h3>{chartTitle}</h3>
+            <ApexCharts
+                options={chartOptions}
+                series={chartSeries}
+                type="donut"
+                height="300px"
+            />
+        </div>
+    );
+};
+
+export default DonutChart;
+
+
+GRADIENT DONUT:-
+
+import React from 'react';
+import ApexCharts from 'react-apexcharts';
+
+const DonutChart = ({ chartData, chartTitle }) => {
+    // Define 12 gradient colors
+    const gradientColors = [
+      {
+        stops: [
+          [0, '#FFB6C1'],
+          [100, '#FF66B2'],
+        ],
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        type: 'linear',
+        direction: 'horizontal',
+      },
+      {
+        stops: [
+          [0, '#00E396'],
+          [100, '#00B8D4'],
+        ],
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        type: 'linear',
+        direction: 'horizontal',
+      },
+      {
+        stops: [
+          [0, '#775DD0'],
+          [100, '#FEB019'],
+        ],
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        type: 'linear',
+        direction: 'horizontal',
+      },
+      {
+        stops: [
+          [0, '#FF4560'],
+          [100, '#FF9800'],
+        ],
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        type: 'linear',
+        direction: 'horizontal',
+      },
+      {
+        stops: [
+          [0, '#28B9B5'],
+          [100, '#8BC34A'],
+        ],
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        type: 'linear',
+        direction: 'horizontal',
+      },
+      {
+        stops: [
+          [0, '#00B8D4'],
+          [100, '#FF66B2'],
+        ],
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        type: 'linear',
+        direction: 'horizontal',
+      },
+      {
+        stops: [
+          [0, '#9C27B0'],
+          [100, '#E91E63'],
+        ],
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        type: 'linear',
+        direction: 'horizontal',
+      },
+      {
+        stops: [
+          [0, '#00E396'],
+          [100, '#FFB6C1'],
+        ],
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        type: 'linear',
+        direction: 'horizontal',
+      },
+      {
+        stops: [
+          [0, '#FF9800'],
+          [100, '#8BC34A'],
+        ],
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        type: 'linear',
+        direction: 'horizontal',
+      },
+      {
+        stops: [
+          [0, '#FF66B2'],
+          [100, '#FEB019'],
+        ],
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        type: 'linear',
+        direction: 'horizontal',
+      },
+      {
+        stops: [
+          [0, '#FF4560'],
+          [100, '#00E396'],
+        ],
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        type: 'linear',
+        direction: 'horizontal',
+      },
+      {
+        stops: [
+          [0, '#FFB6C1'],
+          [100, '#775DD0'],
+        ],
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        type: 'linear',
+        direction: 'horizontal',
+      },
+    ];
+
+    const chartOptions = {
+        chart: {
+            type: 'donut',
+        },
+        labels: chartData.map(item => item.label), // Dynamically setting labels
+        plotOptions: {
+            pie: {
+                startAngle: -90,  // Start angle for the donut
+                endAngle: 270,    // End angle for the donut
+            },
+        },
+        dataLabels: {
+            enabled: false,  // Disable data labels on the donut chart
+        },
+        legend: {
+            position: 'bottom',
+        },
+        tooltip: {
+            y: {
+                formatter: (val) => `${val} Tons`,  // Customize the tooltip format
+            },
+        },
+        fill: {
+            type: 'gradient',  // Enable gradient fill
+            gradient: {
+                type: 'linear',  // Define the type of gradient
+                opacityFrom: 0.7,  // Set the starting opacity
+                opacityTo: 0.9,    // Set the ending opacity
+                stops: gradientColors,  // Apply the defined gradients
+            },
+        },
+        colors: gradientColors.map(gradient => gradient.stops[0][1]), // Fallback solid colors for chart compatibility
+    };
+
+    const chartSeries = chartData.map(item => item.value);
+
+    return (
+        <div className="donut-chart">
+            <h3>{chartTitle}</h3>
+            <ApexCharts
+                options={chartOptions}
+                series={chartSeries}
+                type="donut"
+                height="300px"
+            />
+        </div>
+    );
+};
+
+export default DonutChart;
