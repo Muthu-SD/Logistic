@@ -5,13 +5,13 @@ import { Col, Row } from "antd";
 // import styles from "../../styles/Dashboard.module.css";
 import DonutChart2 from "../../components/DonutChart2";
 import DonutChart from "../../components/DonutChart";
-// import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 import StackedGraph from "../../components/StackedGraph";
 import StackedGraph2 from "../../components/StackedGraph_2";
 import TrackingTable from "../../components/TrackingTable";
 import DonutChartGradient from "../../components/DonutChartGradient";
 const Dashboard = () => {
-    // const { isThemeOne } = useTheme();
+    const { isThemeOne } = useTheme();
 
   // Data for Donut (Product Type Breakdown)
   const productData = [
@@ -60,8 +60,7 @@ const Dashboard = () => {
     { label: "Grand Total", value:52  },
   ];
 
-  // Define the component to render for Product Data based on the theme
-  // const ProductDataDonut = isThemeOne === "theme1" ? DonutChartGradient : DonutChart;
+
 
   return (
     <div style={{ padding: "20px" }}>
@@ -92,13 +91,21 @@ const Dashboard = () => {
           <Row gutter={[0, 0]}>
           <Col span={24}>
             <InfoCard >
+            {isThemeOne ? 
+            <DonutChartGradient chartTitle="Shipment Processing Method" chartData={processingMethodData}/>
+            :
             <DonutChart chartTitle="Shipment Processing Method" chartData={processingMethodData}/>
+              }
           </InfoCard>
         </Col>
 
             <Col span={24}>
             <InfoCard >
+            {isThemeOne ? 
+            <DonutChartGradient chartTitle="Origin Data" chartData={originData}/>
+            :
             <DonutChart chartTitle="Origin Data" chartData={originData}/>
+            }
           </InfoCard>
         </Col>
           </Row>
@@ -106,14 +113,22 @@ const Dashboard = () => {
 
         <Col span={12}>
           <InfoCard >
+          {isThemeOne ? 
+          <DonutChartGradient chartTitle="Supplier Data" chartData={supplierData}/>
+          :
             <DonutChart chartTitle="Supplier Data" chartData={supplierData}/>
+          }
           </InfoCard>
         </Col>
 
         <Col span={12}>
           <InfoCard >
              {/* Conditionally render the Product Data donut chart */}
-            <DonutChartGradient chartTitle="Product Data" chartData={productData}/>
+             {isThemeOne ? 
+             <DonutChartGradient chartTitle="Product Data" chartData={productData}/>
+             :
+             <DonutChart chartTitle="Product Data" chartData={productData}/>
+             }
           </InfoCard>
         </Col>
 

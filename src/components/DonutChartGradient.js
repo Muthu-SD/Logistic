@@ -12,9 +12,9 @@ const DonutChartGradient = ({ chartData, chartTitle }) => {
                 size: '50%',
             },
         },
-        dataLabels: {
-            enabled: false
-          },
+        // dataLabels: {
+        //     enabled: false
+        //   },
         fill: {
             type: 'gradient',
           },
