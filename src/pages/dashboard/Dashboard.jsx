@@ -4,14 +4,73 @@ import InfoCard from "../../components/InfoCard";
 import { Col, Row } from "antd";
 // import styles from "../../styles/Dashboard.module.css";
 import DonutChart2 from "../../components/DonutChart2";
-import DonutChart from "../../components/DonutChart";
+import DonutChart from "../../components/chart/DonutChart";
 import { useTheme } from "../../context/ThemeContext";
 import StackedGraph from "../../components/StackedGraph";
-import StackedGraph2 from "../../components/StackedGraph_2";
 import TrackingTable from "../../components/TrackingTable";
-import DonutChartGradient from "../../components/DonutChartGradient";
+import DonutChartGradient from "../../components/chart/DonutChartGradient";
+import BarChart from "../../components/chart/BarChart";
+import ClearanceLeadTime from "../../components/chart_component/ClearanceLeadTime";
+
+
+
 const Dashboard = () => {
     const { isThemeOne } = useTheme();
+
+//-------------------------------- Transit lead time --> START ---------------------------------------
+const rawTransitData = [
+  { docRcd: '23-08-2021', arrivalDt: '08-10-2021', leadTime: 46 },
+  { docRcd: '31-08-2021', arrivalDt: '04-10-2021', leadTime: 34 },
+  { docRcd: '06-09-2021', arrivalDt: '30-09-2021', leadTime: 24 },
+  { docRcd: '06-09-2021', arrivalDt: '06-10-2021', leadTime: 30 },
+  { docRcd: '06-09-2021', arrivalDt: '07-10-2021', leadTime: 31 },
+  { docRcd: '06-09-2021', arrivalDt: '08-10-2021', leadTime: 32 },
+  { docRcd: '15-09-2021', arrivalDt: '08-10-2021', leadTime: 23 },
+  { docRcd: '23-09-2021', arrivalDt: '13-10-2021', leadTime: 20 },
+  { docRcd: '29-09-2021', arrivalDt: '11-10-2021', leadTime: 12 },
+  { docRcd: '04-10-2021', arrivalDt: '01-11-2021', leadTime: 28 },
+  { docRcd: '13-10-2021', arrivalDt: '01-11-2021', leadTime: 19 },
+  { docRcd: '13-10-2021', arrivalDt: '03-11-2021', leadTime: 21 },
+  { docRcd: '13-10-2021', arrivalDt: '10-11-2021', leadTime: 28 },
+  { docRcd: '23-10-2021', arrivalDt: '08-11-2021', leadTime: 16 },
+  { docRcd: '23-10-2021', arrivalDt: '10-11-2021', leadTime: 18 },
+  { docRcd: '23-10-2021', arrivalDt: '11-11-2021', leadTime: 19 },
+  { docRcd: '23-10-2021', arrivalDt: '12-11-2021', leadTime: 20 },
+  { docRcd: '23-10-2021', arrivalDt: '25-11-2021', leadTime: 33 },
+  { docRcd: '25-10-2021', arrivalDt: '16-11-2021', leadTime: 22 },
+  { docRcd: '27-10-2021', arrivalDt: '21-11-2021', leadTime: 25 },
+  { docRcd: '03-11-2021', arrivalDt: '04-12-2021', leadTime: 31 },
+  { docRcd: '12-11-2021', arrivalDt: '23-11-2021', leadTime: 11 },
+  { docRcd: '12-11-2021', arrivalDt: '01-12-2021', leadTime: 19 },
+  { docRcd: '16-11-2021', arrivalDt: '29-11-2021', leadTime: 13 },
+  { docRcd: '16-11-2021', arrivalDt: '01-12-2021', leadTime: 15 },
+  { docRcd: '16-11-2021', arrivalDt: '06-12-2021', leadTime: 20 },
+  { docRcd: '16-11-2021', arrivalDt: '13-12-2021', leadTime: 27 },
+  { docRcd: '16-11-2021', arrivalDt: '24-12-2021', leadTime: 38 },
+  { docRcd: '16-11-2021', arrivalDt: '28-12-2021', leadTime: 42 },
+  { docRcd: '17-11-2021', arrivalDt: '21-11-2021', leadTime: 4 },
+  { docRcd: '22-11-2021', arrivalDt: '04-12-2021', leadTime: 12 },
+  { docRcd: '22-11-2021', arrivalDt: '29-12-2021', leadTime: 37 },
+  { docRcd: '24-11-2021', arrivalDt: '13-12-2021', leadTime: 19 },
+  { docRcd: '29-11-2021', arrivalDt: '14-12-2021', leadTime: 15 },
+  { docRcd: '29-11-2021', arrivalDt: '28-12-2021', leadTime: 29 },
+  { docRcd: '01-12-2021', arrivalDt: '21-12-2021', leadTime: 20 },
+  { docRcd: '07-12-2021', arrivalDt: '05-01-2022', leadTime: 29 },
+  { docRcd: '07-12-2021', arrivalDt: '06-01-2022', leadTime: 30 },
+  { docRcd: '08-12-2021', arrivalDt: '12-12-2021', leadTime: 4 },
+  { docRcd: '15-12-2021', arrivalDt: '04-01-2022', leadTime: 20 },
+  { docRcd: '22-12-2021', arrivalDt: '05-01-2022', leadTime: 14 },
+  { docRcd: '22-12-2021', arrivalDt: '07-01-2022', leadTime: 16 },
+  { docRcd: '22-12-2021', arrivalDt: '13-01-2022', leadTime: 22 },
+  { docRcd: '28-12-2021', arrivalDt: '04-01-2022', leadTime: 7 },
+  { docRcd: '28-12-2021', arrivalDt: '06-01-2022', leadTime: 9 }
+];
+
+
+//-------------------------------- Transit lead time --> END ---------------------------------------
+
+
+
 
   // Data for Donut (Product Type Breakdown)
   const productData = [
@@ -24,18 +83,22 @@ const Dashboard = () => {
 
     // Data for Donut (Supplier Type Breakdown)
     const supplierData = [
-    { label: "JIANGXI KELAM", value: 54 },
-    { label: "ARSHINE LIFESCIENCE", value: 248 },
-    { label: "BEYRON LTD", value: 27 },
-    { label: "CJ BIO MALAYSIN", value: 19 },
-    { label: "CJ CHEILJEDANG", value: 18 },
-    { label: "DAESANG CORPORATION", value: 255 },
-    { label: "ECO NUTRITION", value: 27 },
-    { label: "ECO NUTRITION", value: 192 },
-    { label: "GOLDEN GAIN GROUP HK LTD", value: 473 },
+    { label: "JIANGXI KELAM", value: 27.2 },
+    { label: "ARSHINE", value: 109.9 },
+    { label: "ARSHINE LIFESCIENCE", value: 55.6 },
+    { label: "ARSHINE LIFESCIENE", value: 54.6 },
+    { label: "BEYRON LTD", value: 27.2 },
+    { label: "CJ BIO MALAYSIN", value: 19.4 },
+    { label: "CJ CHEILJEDANG", value: 17.7 },
+    { label: "DAESANG CORPORATION", value: 254.6 },
+    { label: "ECO NUTRITION", value: 82.186 },
+    { label: "EOC NUTRITION2", value: 55.6 },
+    { label: "GOLDEN GAIN", value: 111.2 },
+    { label: "GOLDEN GAIN GROUP HK LTD", value: 27.216 },
+    { label: "JIANGXI KELEM", value: 361.8 },
     { label: "SHANDONG GOLDEN", value: 27 },
     { label: "SHANGHAI NUVIT", value: 56 },
-    { label: "Grand Total", value: 1396 },
+    { label: "Grand Total", value: 1368.5 },
   ];
 
  // Data for Donut (Origin Type Breakdown)
@@ -61,15 +124,57 @@ const Dashboard = () => {
   ];
 
 
+  const formattedTransitData = rawTransitData.map(item => ({
+    label: item.docRcd,  // Using docRcd as label
+    value: item.leadTime // Using leadTime as value
+}));
 
   return (
     <div style={{ padding: "20px" }}>
       <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
-        <Col span={24}>
+        {/* <Col span={24}>
           <InfoCard title="Pending">
             <StackedGraph2 />
           </InfoCard>
+        </Col> */}
+        <Col span={24}>
+          <InfoCard >
+          <BarChart chartTitle="Transit Lead Time" chartData={formattedTransitData} />
+          </InfoCard>
+        </Col> 
+
+        {/* Clearance lead time  */}
+        <Col span={12}>
+          <InfoCard >
+          <ClearanceLeadTime chartTitle="Clearance Lead Time Over Date"/>
+          </InfoCard>
         </Col>
+
+        {/*Supplier Data */}
+        <Col span={12}>
+          <InfoCard >
+          {isThemeOne ? 
+          <DonutChartGradient chartTitle="Supplier Data" chartData={supplierData}/>
+          :
+            <DonutChart chartTitle="Supplier Data" chartData={supplierData}/>
+          }
+          </InfoCard>
+        </Col>
+
+         {/*Material Data */}
+        <Col span={24}>
+          <InfoCard >
+             {isThemeOne ? 
+             <DonutChartGradient chartTitle="Material Data" chartData={productData}/>
+             :
+             <DonutChart chartTitle="Material Data" chartData={productData}/>
+             }
+          </InfoCard>
+        </Col>
+
+
+
+
         {/* Cleared Section */}
         <Col span={12}>
           <Row gutter={[0, 0]}>
@@ -111,7 +216,7 @@ const Dashboard = () => {
           </Row>
         </Col>
 
-        <Col span={12}>
+        {/* <Col span={12}>
           <InfoCard >
           {isThemeOne ? 
           <DonutChartGradient chartTitle="Supplier Data" chartData={supplierData}/>
@@ -119,18 +224,9 @@ const Dashboard = () => {
             <DonutChart chartTitle="Supplier Data" chartData={supplierData}/>
           }
           </InfoCard>
-        </Col>
+        </Col> */}
 
-        <Col span={12}>
-          <InfoCard >
-             {/* Conditionally render the Product Data donut chart */}
-             {isThemeOne ? 
-             <DonutChartGradient chartTitle="Product Data" chartData={productData}/>
-             :
-             <DonutChart chartTitle="Product Data" chartData={productData}/>
-             }
-          </InfoCard>
-        </Col>
+        
 
         {/* Tracking Section */}
         <Col span={24}>
