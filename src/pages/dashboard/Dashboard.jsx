@@ -13,6 +13,7 @@ import BarChart from "../../components/chart/BarChart";
 import ClearanceLeadTime from "../../components/chart_component/ClearanceLeadTime";
 import ShipmentsHandledChart from "../../components/chart_component/ShipmentsHandledChart";
 import ShipperChargesChart from "../../components/chart_component/ShipperChargesChart";
+import DashboardSidemenu from "./DashboardSidemenu";
 
 const Dashboard = () => {
   const { isThemeOne } = useTheme();
@@ -119,19 +120,21 @@ const Dashboard = () => {
     { label: "Grand Total", value: 52 },
   ];
 
+  //-------------------------------- Transit lead time functions--> START ---------------------------------------
   const formattedTransitData = rawTransitData.map((item) => ({
     label: item.docRcd, // Using docRcd as label
     value: item.leadTime, // Using leadTime as value
   }));
+  //-------------------------------- Transit lead time functions--> END ---------------------------------------
 
   return (
     <div style={{ padding: "20px" }}>
       <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
-        {/* <Col span={24}>
-          <InfoCard title="Pending">
-            <StackedGraph2 />
-          </InfoCard>
-        </Col> */}
+        {/* Three Card at top showing some progress status */}
+        <Col span={24}>
+          <DashboardSidemenu />
+        </Col>
+
         <Col span={24}>
           <InfoCard>
             <BarChart
@@ -198,7 +201,6 @@ const Dashboard = () => {
                 <StackedGraph />
               </InfoCard>
             </Col>
-
             <Col span={24}>
               <InfoCard title="Total">
                 <DonutChart2 />
@@ -206,6 +208,7 @@ const Dashboard = () => {
             </Col>
           </Row>
         </Col>
+
         {/* Donut Charts Section */}
         <Col span={12}>
           <Row gutter={[0, 0]}>
@@ -224,7 +227,6 @@ const Dashboard = () => {
                 )}
               </InfoCard>
             </Col>
-
             <Col span={24}>
               <InfoCard>
                 {isThemeOne ? (
