@@ -2,10 +2,13 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import useStore from "../store/UseStore";
 
-const ProtectedRoute = ({ element }) => {
-  const isAuthenticated = useStore((state) => state.isAuthenticated);
+const ProtectedRoute = ({ element, role }) => {
+  const {isAuthenticated, user} = useStore();
+if(!isAuthenticated && (role && user?.role !== role)){
 
-  return isAuthenticated ? element : <Navigate to="/login" />;
+  return <Navigate to="/login" />;
+}
+return element 
 };
 
 export default ProtectedRoute;

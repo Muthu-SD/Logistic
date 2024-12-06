@@ -10,7 +10,7 @@ const useStore = create(
 
       // Sign up function
       signup: (user) => {
-        if (user) {
+        if (user && user.role) {
           set({ user, isAuthenticated: true });
         } else {
           console.error("Signup failed: User data is required");
@@ -19,7 +19,7 @@ const useStore = create(
 
       // Login function
       login: (user) => {
-        if (user) {
+        if (user && user.role) {
           set({ user, isAuthenticated: true });
         } else {
           console.error("Login failed: User data is required");

@@ -8,6 +8,20 @@ import logo from "../assets/Logo.png"; // Import logo
 import illustrator from "../assets/login/Illustrator.svg"; // Import illustration
 import { useTheme } from "../context/ThemeContext";
 
+//For static role based
+const users = [
+  {
+    email: "SuperAdmin@albs.com",
+    password: "Superadmalbs@123",
+    role:"SuperAdmin"
+  },
+  {
+    email: "Admin@albs.com",
+    password: "Admalbs@123",
+    role:"Admin"
+  }
+]
+
 const Login = () => {
   // const url =`Process.env.api`
   const navigate = useNavigate(); // Initialize useNavigate
@@ -15,21 +29,17 @@ const Login = () => {
   const { login } = useStore();
   const { theme } = useTheme();
 
+
   // Pre-fill email and password
-  const [initialValues] = useState({
-    email: "Admin@albs.com",
-    password: "Admin@123",
-  });
+  // const [initialValues] = useState();
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
       // Mock authentication (replace with actual API call)
-      if (
-        values.email === "Admin@albs.com" &&
-        values.password === "Admin@123"
-      ) {
-        login({ email: values.email });
+      const user =  users.find(user=> user.email === values.email && user.passsword === values.passsword)
+      if (user) {
+        login(user);
         message.success("Login successful!");
         navigate("/"); // Navigate to dashboard after successful login
       } else {
@@ -68,7 +78,7 @@ const Login = () => {
             name="login"
             onFinish={onFinish}
             className={Styles.formContainer}
-            initialValues={initialValues} // Set initial values for the form
+            // initialValues={initialValues} // Set initial values for the form
           >
             <h2 className={Styles.formTitle}>Login</h2>
             <Form.Item

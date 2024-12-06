@@ -9,8 +9,10 @@ import { useTheme } from "../context/ThemeContext";
 import styles from "../styles/Header.module.css";
 import ImportModal from "../components/ImportModal"; // Import the modal
 import { RxBlendingMode } from "react-icons/rx";
+import useStore from "../store/UseStore";
 
 const Header = ({ onImport }) => {
+  const {user} = useStore();
   const { toggleTheme, theme } = useTheme();
   const [modalVisible, setModalVisible] = useState(false); // State for modal visibility
 
@@ -39,9 +41,13 @@ const Header = ({ onImport }) => {
         <div className={styles.themeIcon} onClick={toggleTheme}>
           <RxBlendingMode />
         </div>
-        <Dropdown overlay={menu} trigger={["click"]}>
-          <Avatar icon={<UserOutlined />} style={{cursor:"pointer"}}/>
-        </Dropdown>
+        {user?.role === "SuperAdmin" ?
+          <Dropdown overlay={menu} trigger={["click"]}>
+            <Avatar icon={<UserOutlined />} style={{ cursor: "pointer" }} />
+          </Dropdown>
+          :
+          <Avatar icon={<UserOutlined />} style={{ cursor: "pointer" }} />
+        }
       </div>
       <ImportModal visible={modalVisible} onClose={() => setModalVisible(false)} onDataImport={onImport}/> {/* Modal for import */}
     </div>

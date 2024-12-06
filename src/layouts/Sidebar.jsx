@@ -9,27 +9,38 @@ import logo from "../assets/Logo2.png";
 import { useTheme } from "../context/ThemeContext";
 import { FaShippingFast } from "react-icons/fa";
 
+
 const navItems = [
   {
     path: "/",
+    role:"SuperAdmin",
+    label: "Dashboard",
+    icon: <PieChartOutlined />,
+  },
+  {
+    path: "/",
+    role:"Admin",
     label: "Dashboard",
     icon: <PieChartOutlined />,
   },
   {
     path: "#",
+    role:"SuperAdmin",
     label: "Supplier Clearance",
     icon: <FileDoneOutlined />,
   },
   { 
     path: "#2",
+    role:"SuperAdmin",
     label: "Shipping Status",
     icon: <FaShippingFast />,
   },
 ];
 
 const Sidebar = () => {
+  const { user ,logout } = useStore();
   const { theme } = useTheme();
-  const { logout } = useStore();
+  // const { logout } = useStore();
   const [selectedKey, setSelectedKey] = useState("/");
 
   useEffect(() => {
@@ -45,6 +56,11 @@ const Sidebar = () => {
     localStorage.setItem("selectedKey", path); // Store selectedKey in local storage
   };
 
+  // Filter nav items based on user role
+  const filteredNavItems = navItems.filter(
+    (item) => item.role === user?.role 
+  );
+
   return (
     <div
       className={styles.sidebar}
@@ -54,7 +70,7 @@ const Sidebar = () => {
         <img src={logo} alt="Logo" className={styles.logo} />
       </div>
       <ul className={styles.navLinks}>
-        {navItems.map((item) => {
+        {filteredNavItems.map((item) => {
           const isActive = selectedKey === item.path;
           const itemStyle = {
             backgroundColor: isActive
