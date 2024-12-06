@@ -16,7 +16,6 @@ const ShippingStatus = lazy(() => import("../pages/ShippingStatus"));
 
 const AppRoutes = () => {
   const { user } = useStore();
-  console.log("USER", user)
   return (
 
     <Routes>
