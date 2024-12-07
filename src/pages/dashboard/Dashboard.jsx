@@ -24,6 +24,23 @@ const Dashboard = () => {
   //   value: item.leadTime, // Using leadTime as value
   // }));
   //-------------------------------- Transit lead time functions--> END ---------------------------------------
+  
+  // const itemsPerPage = 25; // Number of items to show per page
+  // const [currentPage, setCurrentPage] = useState(1);
+
+  // Handle next page
+  // const goToNextPage = () => {
+  //   if (currentPage * itemsPerPage < shipmentCostsData.length) {
+  //     setCurrentPage(currentPage + 1);
+  //   }
+  // };
+
+  // // Handle previous page
+  // const goToPreviousPage = () => {
+  //   if (currentPage > 1) {
+  //     setCurrentPage(currentPage - 1);
+  //   }
+  // };
 
   return (
     <div style={{ padding: "20px" }}>
@@ -94,70 +111,27 @@ const Dashboard = () => {
         {/* Shipment Costs Analysis by Shipper */}
         <Col span={24}>
           <InfoCard>
-            <ShipmentCostsChart chartTitle="Shipment Costs Analysis by Shipper" data={shipmentCostsData}/>
-          </InfoCard>
+            <ShipmentCostsChart chartTitle="Shipment Costs Analysis by Shipper" 
+            data={shipmentCostsData} 
+            // currentPage={currentPage}
+            // itemsPerPage={itemsPerPage}
+            />
+          
+        {/* <div style={{ marginTop: "20px", textAlign:"center" }}>
+        <Button onClick={goToPreviousPage} disabled={currentPage === 1}>
+          Previous
+        </Button>
+        <span style={{ margin: "0 10px" }}>Page {currentPage}</span>
+        <Button onClick={goToNextPage} disabled={currentPage * itemsPerPage >= shipmentCostsData.length}>
+          Next
+        </Button>
+      </div>     */}
+      </InfoCard>
         </Col>
-
-
-
-        {/* Cleared Section */}
-        {/* <Col span={12}>
-          <Row gutter={[0, 0]}>
-            <Col span={24}>
-              <InfoCard title="Cleared">
-                <StackedGraph />
-              </InfoCard>
-            </Col>
-            <Col span={24}>
-              <InfoCard title="Total">
-                <DonutChart2 />
-              </InfoCard>
-            </Col>
-          </Row>
-        </Col> */}
-
-        {/* Donut Charts Section */}
-        {/* <Col span={12}>
-          <Row gutter={[0, 0]}>
-            <Col span={24}>
-              <InfoCard>
-                {isThemeOne ? (
-                  <DonutChartGradient
-                    chartTitle="Shipment Processing Method"
-                    chartData={processingMethodData}
-                  />
-                ) : (
-                  <DonutChart
-                    chartTitle="Shipment Processing Method"
-                    chartData={processingMethodData}
-                  />
-                )}
-              </InfoCard>
-            </Col>
-            <Col span={24}>
-              <InfoCard>
-                {isThemeOne ? (
-                  <DonutChartGradient
-                    chartTitle="Origin Data"
-                    chartData={originData}
-                  />
-                ) : (
-                  <DonutChart chartTitle="Origin Data" chartData={originData} />
-                )}
-              </InfoCard>
-            </Col>
-          </Row>
-        </Col> */}
-
-        {/* Tracking Section */}
-        {/* <Col span={24}>
-          <InfoCard title="Tracking">
-            <TrackingTable />
-          </InfoCard>
-        </Col> */}
-        
       </Row>
+      
     </div>
+    
   );
 };
 

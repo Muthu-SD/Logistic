@@ -413,7 +413,6 @@ export const shipmentCostsData = [
   { "GR. WT.": 10929, "SHIPPER": "ZAPP PRECISION", "STORAGE / DEMURRAGE": "USD 100", "detention charges": "USD 59" },
   { "GR. WT.": 2087, "SHIPPER": "BAUMANN", "STORAGE / DEMURRAGE": "USD 100", "detention charges": "USD 59" },
   { "GR. WT.": 49846, "SHIPPER": "HYDRO ALUMNIUM", "STORAGE / DEMURRAGE": "USD 100", "detention charges": "USD 59" },
-  { "GR. WT.": 1638.5, "SHIPPER": "WESTLEY", "STORAGE / DEMURRAGE": "USD 100", "detention charges": "USD 59" },
 ];
 //-------------------------------- Shipment Costs Analysis by Shipper --> END ---------------------------------------
 

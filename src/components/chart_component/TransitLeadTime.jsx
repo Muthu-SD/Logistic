@@ -32,7 +32,7 @@ const TransitLeadTime = ({ data, chartTitle }) => {
         curve: "smooth",
       },
       tooltip: {
-        custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+        custom: function ({ series, seriesIndex, dataPointIndex,}) {
             const docRcd = data[dataPointIndex].docRcd;
             const arrivalDt = data[dataPointIndex].arrivalDt;
             const leadTime = series[seriesIndex][dataPointIndex];
