@@ -1,76 +1,84 @@
 import React from "react";
-import ApexCharts from "react-apexcharts";
+import ReactApexChart from "react-apexcharts";
 
-const ShipmentsHandledChart = ({ chartTitle }) => {
-  const chartData = {
-    series: [
-      {
-        name: "Pending",
-        data: [13788, 13933, 4612, 391, 74052.5, 74533], // Pending GR. WT.
-      },
-      {
-        name: "Clearance",
-        data: [2472, 14715, 790.7, 13092, 1455, 2770], // Clearance GR. WT.
-      },
-    ],
-    options: {
-      chart: {
-        type: "bar",
-        stacked: true, // Enables stacking
-        toolbar: {
-          show: false,
-        },
-      },
-      xaxis: {
-        categories: [
-          "Zapp Precision Metals (Sweden) AB",
-          "Zapp Precision Metals (Sweden) AB",
-          "KS GLEITLAGER GMBH",
-          "MERITOR HEAVY BRAKING SYSTEMS (UK) LIMITED",
-          "PRESS METAL BINTULU SDN BHD",
-          "PRESS METAL BINTULU SDN BHD",
-        ],
-        labels: {
-          rotate: -45, // Angle
-          formatter: (val) =>
-            val.length > 10 ? val.slice(0, 10) + "..." : val, // Truncate long text
-        },
-      },
-      plotOptions: {
-        bar: {
-          horizontal: false, // Vertical bars
-        },
-      },
-      colors: ["#FF4560", "#00E396"], // Pending (red), Clearance (green)
-      legend: {
-        position: "bottom",
-      },
-      // dataLabels: {
-      //     enabled: false,
-      // },
-      tooltip: {
-        y: {
-          formatter: (val) => `${val} kg`,
-        },
-        x: {
-          formatter: (val, { dataPointIndex }) => {
-            // Return the full category name
-            return chartData.options.xaxis.categories[dataPointIndex];
-          },
-        },
+const ShipmentsHandledChart = ({ chartTitle, data }) => {
+  // Prepare data for pending and clearance
+  const categories = [...new Set(data.map((item) => item.SHIPPER))]; // Unique shippers
+  const pendingSeries = categories.map(
+    (shipper) => data.find((item) => item.SHIPPER === shipper && item.STATUS === "PENDING")?.["GR. WT."] || 0
+  );
+  const clearanceSeries = categories.map(
+    (shipper) => data.find((item) => item.SHIPPER === shipper && item.STATUS === "CLEARANCE")?.["GR. WT."] || 0
+  );
+
+  const abbreviatedCategories = categories.map((shipper) =>
+    shipper.length > 15 ? `${shipper.slice(0, 12)}...` : shipper
+  );
+
+  const options = {
+    chart: {
+      type: "line",
+      toolbar: {
+        show: false,
       },
     },
+    stroke: {
+      curve: "smooth", // Smooth lines
+    },
+    xaxis: {
+      categories: abbreviatedCategories,
+      title: { text: "Shippers" },
+    },   
+    yaxis: [
+      {
+        title: {
+          text: "Pending Gross Weight (Tons)",
+        },
+      },
+      {
+        opposite: true,
+        title: {
+          text: "Clearance Gross Weight (Tons)",
+        },
+      },
+    ],
+    tooltip: {
+      shared: true, // Combine tooltip for both axes
+      intersect: false,
+      custom: ({  dataPointIndex}) => {
+        const fullShipperName = categories[dataPointIndex];
+        const pendingWeight = pendingSeries[dataPointIndex];
+        const clearanceWeight = clearanceSeries[dataPointIndex];
+        return `
+          <div style="padding: 8px; font-size: 12px;">
+            <strong>${fullShipperName}</strong><br/>
+            Pending: ${pendingWeight.toFixed(2)} Tons<br/>
+            Clearance: ${clearanceWeight.toFixed(2)} Tons
+          </div>`;
+      },
+    },
+    legend: {
+      position: "top",
+    },
   };
+
+  const series = [
+    {
+      name: "Pending",
+      type: "line",
+      data: pendingSeries,
+    },
+    {
+      name: "Clearance",
+      type: "line",
+      data: clearanceSeries,
+    },
+  ];
 
   return (
     <div>
       <h3>{chartTitle}</h3>
-      <ApexCharts
-        options={chartData.options}
-        series={chartData.series}
-        type="bar"
-        height="300px"
-      />
+      <ReactApexChart options={options} series={series} type="line" height="500px" />
     </div>
   );
 };

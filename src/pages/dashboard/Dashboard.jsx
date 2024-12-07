@@ -1,25 +1,22 @@
 // Dashboard.jsx
 import React from "react";
 import { Col, Row } from "antd";
-import { useTheme } from "../../context/ThemeContext";
+// import { useTheme } from "../../context/ThemeContext";
 // import styles from "../../styles/Dashboard.module.css";
-import { rawTransitData, clearanceLeadTimeData, productData, supplierData, originData, processingMethodData, materialData } from "../../store/DataProvider"
+import { rawTransitData, clearanceLeadTimeData, supplierData, materialData,shipmentData, shipmentCostsData } from "../../store/DataProvider"
 import InfoCard from "../../components/InfoCard";
-import DonutChart2 from "../../components/DonutChart2";
-import DonutChart from "../../components/chart/DonutChart";
-import StackedGraph from "../../components/StackedGraph";
-import TrackingTable from "../../components/TrackingTable";
-import DonutChartGradient from "../../components/chart/DonutChartGradient";
-import ShipmentsHandledChart from "../../components/chart_component/ShipmentsHandledChart";
-import ShipperChargesChart from "../../components/chart_component/ShipperChargesChart";
+// import ShipperChargesChart from "../../components/chart_component/ShipperChargesChart";
 import DashboardSidemenu from "./DashboardSidemenu";
 import TransitLeadTime from "../../components/chart_component/TransitLeadTime";
 import ClearanceLeadTime from "../../components/chart_component/ClearanceLeadTime"
 import SupplierBarChart from "../../components/chart_component/SupplierBarChart";
 import MaterialPieChart from "../../components/chart_component/MaterialPieChart";
+// import ShipmentsStackedBarChart from "../../components/chart_component/ShipmentsStackedBarChart";
+import ShipmentsHandledChart from "../../components/chart_component/ShipmentsHandledChart";
+import ShipmentCostsChart from "../../components/chart_component/ShipmentCostsChart";
 
 const Dashboard = () => {
-  const { isThemeOne } = useTheme();
+  // const { isThemeOne } = useTheme();
 
   //-------------------------------- Transit lead time functions--> START ---------------------------------------
   // const formattedTransitData = rawTransitData.map((item) => ({
@@ -71,7 +68,7 @@ const Dashboard = () => {
         </Col> */}
 
         {/*Material Data */}
-        <Col span={12}>
+        <Col span={24}>
           <InfoCard>
 
 <MaterialPieChart chartTitle="Material Data" data={materialData}/>
@@ -88,18 +85,20 @@ const Dashboard = () => {
         </Col>
 
         {/* shipments handled  */}
-        <Col span={12}>
+        <Col span={24}>
           <InfoCard>
-            <ShipmentsHandledChart chartTitle="Shipments Handled" />
+            <ShipmentsHandledChart chartTitle="Shipments Handled (Pending vs. Cleared)" data={shipmentData}/>
           </InfoCard>
         </Col>
 
         {/* Shipment Costs Analysis by Shipper */}
         <Col span={24}>
           <InfoCard>
-            <ShipperChargesChart chartTitle="Shipment Costs Analysis by Shipper" />
+            <ShipmentCostsChart chartTitle="Shipment Costs Analysis by Shipper" data={shipmentCostsData}/>
           </InfoCard>
         </Col>
+
+
 
         {/* Cleared Section */}
         {/* <Col span={12}>
