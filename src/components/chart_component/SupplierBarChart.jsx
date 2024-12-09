@@ -38,7 +38,7 @@ const SupplierBarChart = ({ chartTitle, data }) => {
         formatter: (value) => `${value.toFixed(2)} Tons`, 
       },
     },
-    colors: ["#8740cd"], 
+    colors: ["#101820"], 
   };
 
   const series = [

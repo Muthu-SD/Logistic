@@ -33,15 +33,15 @@ const SingleBarChart = ({ chartTitle, data }) => {
     bar: {
       colors: {
         ranges: [
-          { from: -100, to: -1, color: "#FF4D4F" }, // Red for negative values
-          { from: 0, to: 5, color: "#28A745" }, // Green for 0-5 days
-          { from: 6, to: 10, color: "#FFC107" }, // Yellow for 6-10 days
-          { from: 11, to: 15, color: "#17A2B8" }, // Blue for >10 days
+          { from: -100, to: -1, color: "#FF4560" }, // Red for negative values
+          { from: 0, to: 5, color: "#008FFB" }, // Blue for 0-5 days  
+          { from: 6, to: 10, color: "#775DD0" }, // purple for 6-10 days
+          { from: 11, to: 15, color: "#00E396" }, // Green for >10 days
         ],
       },
     },
   },
-  colors: ["#101820"], // Default color black for bars outside conditions
+  colors: ["#FEB019"], // Default color yellow for bars outside conditions
 };
   const series = [
     {

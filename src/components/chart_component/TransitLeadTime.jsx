@@ -14,7 +14,7 @@ const TransitLeadTime = ({ chartTitle }) => {
     ],
     options: {
       chart: {
-        type: "line",
+        type: "area",
         toolbar: {
             show: false,
           },
@@ -23,6 +23,15 @@ const TransitLeadTime = ({ chartTitle }) => {
         categories: rawTransitData.map((item) => item.docRcd), // Dates on the x-axis
         title: {
           text: "Document Receipt Date (DOC. RCD.)",
+        },
+        fill: {
+          type: "gradient",
+          gradient: {
+            shadeIntensity: 1,
+            opacityFrom: 0.7,
+            opacityTo: 0.9,
+            stops: [0, 100],
+          },
         },
       },
       yaxis: {
@@ -57,7 +66,7 @@ const TransitLeadTime = ({ chartTitle }) => {
       <Chart
         options={chartData.options}
         series={chartData.series}
-        type="line"
+        type="area"
         height="300px"
       />
     </div>

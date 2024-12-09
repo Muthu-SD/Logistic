@@ -15,9 +15,6 @@ const MaterialPieChart = ({ chartTitle, data }) => {
       type: "donut",
     },
     labels: labels,
-    fill: {
-        type: 'gradient',
-      },
     tooltip: {
       y: {
         formatter: (value) => `${value.toFixed(2)} Tons`, // Tooltip for values
@@ -35,6 +32,7 @@ const MaterialPieChart = ({ chartTitle, data }) => {
               show: true,
               label: "Total",
               formatter: () => `${grandTotal.toFixed(2)} Tons`, // Display total inside the donut
+
             },
           },
         },

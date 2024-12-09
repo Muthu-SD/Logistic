@@ -17,7 +17,7 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
 
   const options = {
     chart: {
-      type: "line",
+      type: "area",
       toolbar: {
         show: false,
       },
@@ -26,10 +26,13 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
       curve: "smooth", // Smooth lines
       // width: 2,
     },
+    markers: {
+      size: 0, // Disable markers
+    },
     xaxis: {
       categories: abbreviatedCategories,
       title: { text: "Shippers" },
-    },   
+    },
     yaxis: [
       {
         title: {
@@ -62,7 +65,7 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
     tooltip: {
       shared: true, // Combine tooltip for both axes
       intersect: false,
-      custom: ({  dataPointIndex}) => {
+      custom: ({ dataPointIndex }) => {
         const fullShipperName = categories[dataPointIndex];
         const pendingWeight = pendingSeries[dataPointIndex];
         const clearanceWeight = clearanceSeries[dataPointIndex];
@@ -74,7 +77,7 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
           </div>`;
       },
     },
-    colors: ["#FF4D4F", "#28A745"], // Pending (red), Clearance (green)
+    colors: ["#8740CD", "#628EFF"], // Pending (red), Clearance (green),
     legend: {
       position: "top",
     },
@@ -83,12 +86,10 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
   const series = [
     {
       name: "Pending",
-      type: "line",
       data: pendingSeries,
     },
     {
       name: "Clearance",
-      type: "line",
       data: clearanceSeries,
     },
   ];
@@ -96,7 +97,7 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
   return (
     <div>
       <h3>{chartTitle}</h3>
-      <ReactApexChart options={options} series={series} type="line" height="500px" />
+      <ReactApexChart options={options} series={series} type="area" height="500px" />
     </div>
   );
 };
