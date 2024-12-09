@@ -40,7 +40,7 @@ const MaterialPieChart = ({ chartTitle, data }) => {
         },
       },
     },
-    colors: ["#008FFB", "#00E396", "#FEB019", "#FF4560", "#775DD0"], // Optional color customization
+    colors: ["#775DD0", "#00E396", "#FEB019", "#FF4560","#008FFB"], // Optional color customization
   };
 
   const series = seriesData;
@@ -48,7 +48,7 @@ const MaterialPieChart = ({ chartTitle, data }) => {
   return (
     <div>
       <h3>{chartTitle}</h3>
-      <ReactApexChart options={options} series={series} type="donut" height="400px" />
+      <ReactApexChart options={options} series={series} type="donut" height="350px" />
     </div>
   );
 };

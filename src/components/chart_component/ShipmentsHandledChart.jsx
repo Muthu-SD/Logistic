@@ -24,6 +24,7 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
     },
     stroke: {
       curve: "smooth", // Smooth lines
+      // width: 2,
     },
     xaxis: {
       categories: abbreviatedCategories,
@@ -33,12 +34,28 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
       {
         title: {
           text: "Pending Gross Weight (Tons)",
+          style: {
+            color: "#FF4D4F", // Match "Pending" color
+          },
+        },
+        labels: {
+          style: {
+            colors: "#FF4D4F", // Match "Pending" color
+          },
         },
       },
       {
         opposite: true,
         title: {
           text: "Clearance Gross Weight (Tons)",
+          style: {
+            color: "#28A745", // Match "Clearance" color
+          },
+        },
+        labels: {
+          style: {
+            colors: "#28A745", // Match "Clearance" color
+          },
         },
       },
     ],
@@ -57,6 +74,7 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
           </div>`;
       },
     },
+    colors: ["#FF4D4F", "#28A745"], // Pending (red), Clearance (green)
     legend: {
       position: "top",
     },

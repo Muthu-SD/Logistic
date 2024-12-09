@@ -34,6 +34,17 @@ const ShipmentCostsChart = ({ chartTitle, data, itemsPerPage = 20 }) => {
                 show: false,
             },
         },
+      colors: [
+        //theme 1
+        "#1E90FF", 
+        "#FFB347"
+        // "#FFA500"
+        //theme2
+        // "#4682B4",
+        // "#FF7F50"
+        // "#FFBF00"
+
+      ],
         xaxis: {
             categories: categories,
             title: {

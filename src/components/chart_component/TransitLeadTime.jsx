@@ -1,13 +1,15 @@
 import React from "react";
 import Chart from "react-apexcharts";
+import { rawTransitData } from "../../store/DataProvider";
 
-const TransitLeadTime = ({ data, chartTitle }) => {
+const TransitLeadTime = ({ chartTitle }) => {
+  
   // Prepare the data for the chart
   const chartData = {
     series: [
       {
         name: "Transit Lead Time",
-        data: data.map((item) => item.leadTime),
+        data: rawTransitData.map((item) => item.leadTime),
       },
     ],
     options: {
@@ -18,7 +20,7 @@ const TransitLeadTime = ({ data, chartTitle }) => {
           },
       },
       xaxis: {
-        categories: data.map((item) => item.docRcd), // Dates on the x-axis
+        categories: rawTransitData.map((item) => item.docRcd), // Dates on the x-axis
         title: {
           text: "Document Receipt Date (DOC. RCD.)",
         },
@@ -30,11 +32,13 @@ const TransitLeadTime = ({ data, chartTitle }) => {
       },
       stroke: {
         curve: "smooth",
+        // width: 2,
       },
+      colors: ["#3B82F6"], // Blue color for the line
       tooltip: {
         custom: function ({ series, seriesIndex, dataPointIndex,}) {
-            const docRcd = data[dataPointIndex].docRcd;
-            const arrivalDt = data[dataPointIndex].arrivalDt;
+            const docRcd = rawTransitData[dataPointIndex].docRcd;
+            const arrivalDt = rawTransitData[dataPointIndex].arrivalDt;
             const leadTime = series[seriesIndex][dataPointIndex];
             return `
               <div style="padding: 10px; border: 1px solid #ddd; background: #fff;">

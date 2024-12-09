@@ -47,6 +47,7 @@ button {
   --btn-hover: #e67e6e;
   --btn-succes: green;
   --gradient1: linear-gradient(90deg, #628eff 0%, #8740cd 52%, #580475 100%);
+   /* --gradient1: linear-gradient(90deg, #7665ff 0%, #e065ff 100%); */
   --gradient2: #a5a5a5;
   --color-pink-bg: pink;
   --color-pink-text: rgb(168, 168, 168);

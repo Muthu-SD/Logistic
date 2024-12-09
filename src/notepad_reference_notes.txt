@@ -1062,4 +1062,142 @@ const DonutChart = ({ chartData, chartTitle }) => {
 
 export default DonutChart;
 
-dummy
+Clearance Lead Time Chart:-
+ADDED LEGEND FOR COLOR RANGE AND WHILE HOVERING IT AS TO FIX THE ISSUE FOR REFERENCE I AM SAVING 
+
+import React, { useRef, useState } from "react";
+import ReactApexChart from "react-apexcharts";
+
+const SingleBarChart = ({ chartTitle, data }) => {
+  const chartRef = useRef(null); // Ref to access the chart instance
+  const [hoveredRange, setHoveredRange] = useState(null); // Track hovered range
+
+  // Extract x-axis categories and y-axis data from the provided prop
+  const categories = data.map((item) => item.OOC_date);
+  const seriesData = data.map((item) => item.clearance_lead_time);
+
+  const colorRanges = [
+    { label: "Negative Values", color: "#FF4D4F", range: [-100, -1] },
+    { label: "0-5 Days", color: "#28A745", range: [0, 5] },
+    { label: "6-10 Days", color: "#FFC107", range: [6, 10] },
+    { label: "11-15 Days", color: "#17A2B8", range: [11, 15] },
+  ];
+  
+  const options = {
+    chart: {
+      type: "bar",
+      toolbar: {
+        show: false,
+      },
+    },
+    xaxis: {
+      categories: categories,
+      title: { text: "OOC Date" },
+    },
+    yaxis: {
+      title: { text: "Clearance Lead Time (Days)" },
+    },
+  tooltip: {
+    y: {
+      formatter: (value,{ dataPointIndex }) => {
+        const eta = data[dataPointIndex].ETA;  // Get the ETA based on the index
+        return `${value} days | ETA: ${eta}`;
+      },
+    },
+  },
+
+  plotOptions: {
+    bar: {
+      colors: {
+        ranges: colorRanges.map((range) => ({
+          from: range.range[0],
+          to: range.range[1],
+          color: range.color,
+        })),
+      },
+    },
+  },
+  states: {
+    normal: {
+      filter: { type: "none" }, // Normal state (default)
+    },
+    active: {
+      filter: {
+        type: "lighten",
+        value: 0.5, // Dim other bars slightly when hovered
+      },
+    },
+  },
+  colors: ["#101820"], // Default color for non-matching bars
+};
+
+  const series = [
+    {
+      name: "Lead Time",
+      data: seriesData,
+    },
+  ];
+
+  const handleLegendHover = (range) => {
+    setHoveredRange(range);
+    if (chartRef.current) {
+      const chart = chartRef.current.chart;
+      const activeIndexes = seriesData
+        .map((value, index) => {
+          return value >= range.range[0] && value <= range.range[1]
+            ? index
+            : null;
+        })
+        .filter((i) => i !== null);
+
+      chart.toggleHighlight({
+        seriesIndex: 0,
+        dataPointIndex: activeIndexes,
+      });
+    }
+  };
+
+  const handleLegendLeave = () => {
+    setHoveredRange(null);
+    if (chartRef.current) {
+      chartRef.current.chart.clearHighlight();
+    }
+  };
+
+  return (
+    <div>
+        <h3>{chartTitle}</h3>
+      <ReactApexChart 
+      ref={chartRef} // Attach ref to the chart
+      options={options} 
+      series={series} 
+      type="bar" 
+      height="350px"/>
+     {/* Custom Legend */}
+     <div style={{ marginTop: "10px" }}>
+        <div style={{ display: "flex", gap: "20px", justifyContent:"center"}}>
+          {colorRanges.map((range, index) => (
+            <div key={index} style={{ display: "flex", alignItems: "center", gap: "10px",cursor: "pointer", }}
+            onMouseEnter={() => handleLegendHover(range)}
+              onMouseLeave={handleLegendLeave}
+            >
+              <span
+                style={{
+                  width: "15px",
+                  height: "15px",
+                  borderRadius:"50%",
+                  backgroundColor: range.color,
+                  display: "inline-block",
+                }}
+              ></span>
+              <span>{range.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SingleBarChart;
+

@@ -9,6 +9,8 @@
 
 .headerContainer {
   margin-left: 230px;
+  height: 100vh;
+  overflow: auto;
   /* padding: 20px; */
   flex: 1;
   /* background-color:var(--layout-background); */

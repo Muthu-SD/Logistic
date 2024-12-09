@@ -1,10 +1,17 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { theme1, theme2 } from "../theme/Theme";
 
 export const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
-  const [isThemeOne, setIsThemeOne] = useState(true); // State to toggle between two themes
+   // Read the initial theme from localStorage or default to theme1
+   const savedTheme = localStorage.getItem("theme") === "true"; // "true" means theme1, "false" means theme2
+  const [isThemeOne, setIsThemeOne] = useState(savedTheme); // State to toggle between two themes
+
+  useEffect(() => {
+    // Save the theme to localStorage whenever it changes
+    localStorage.setItem("theme", isThemeOne);
+  }, [isThemeOne]);
 
   const toggleTheme = () => {
     setIsThemeOne((prev) => !prev);

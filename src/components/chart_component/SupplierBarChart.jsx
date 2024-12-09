@@ -35,10 +35,10 @@ const SupplierBarChart = ({ chartTitle, data }) => {
     },
     tooltip: {
       y: {
-        formatter: (value) => `${value.toFixed(2)} Tons`, // Format tooltip values
+        formatter: (value) => `${value.toFixed(2)} Tons`, 
       },
     },
-    colors: ["rgba(135, 64, 205, 0.6)"], // Optional: customize bar colors
+    colors: ["#8740cd"], 
   };
 
   const series = [

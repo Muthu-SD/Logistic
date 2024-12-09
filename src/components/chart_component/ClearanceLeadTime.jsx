@@ -28,6 +28,20 @@ const SingleBarChart = ({ chartTitle, data }) => {
       },
     },
   },
+
+  plotOptions: {
+    bar: {
+      colors: {
+        ranges: [
+          { from: -100, to: -1, color: "#FF4D4F" }, // Red for negative values
+          { from: 0, to: 5, color: "#28A745" }, // Green for 0-5 days
+          { from: 6, to: 10, color: "#FFC107" }, // Yellow for 6-10 days
+          { from: 11, to: 15, color: "#17A2B8" }, // Blue for >10 days
+        ],
+      },
+    },
+  },
+  colors: ["#101820"], // Default color black for bars outside conditions
 };
   const series = [
     {
@@ -43,7 +57,7 @@ const SingleBarChart = ({ chartTitle, data }) => {
       options={options} 
       series={series} 
       type="bar" 
-      height="350px"/>
+      height="500px"/>
     </div>
   );
 };
