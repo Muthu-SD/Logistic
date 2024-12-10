@@ -94,6 +94,13 @@ button {
   --stackedGraph2-color3_t2: rgba(85, 85, 255, 0.8);
   --stackedGraph2-color4_t2: rgba(170, 170, 170, 0.8);
   --stackedGraph2-color5_t2: rgba(0, 0, 139, 0.8);  
+  /* ----------------------------------------------- All 6 chart color --------------------------------------------------- */
+    /* TransitLeadTimeChart */
+  --transitLeadTime-color1_t1:#3B82F6;
+  --transitLeadTime-color1_t2:#344966;
+  /* ClearanceLeadTimeChart */
+  
+
 }
 /* ------------------------------------------ custom colors for Dashboard-app --> END ------------------------------------ */
 

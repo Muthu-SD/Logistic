@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { Button } from "antd";  // For pagination buttons
+import { useTheme } from "../../context/ThemeContext";
 
 const ShipmentCostsChart = ({ chartTitle, data, itemsPerPage = 20 }) => {
+  const { isThemeOne } = useTheme();
 
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -34,17 +36,7 @@ const ShipmentCostsChart = ({ chartTitle, data, itemsPerPage = 20 }) => {
                 show: false,
             },
         },
-      colors: [
-        //theme 1
-        "#628eff", 
-        "#580475"
-        // "#FFA500"
-        //theme2
-        // "#4682B4",
-        // "#FF7F50"
-        // "#FFBF00"
-
-      ],
+        colors: isThemeOne ? ["#628eff", "#580475"] : ["#344966", "#a5a5a5"],
         xaxis: {
             categories: categories,
             title: {

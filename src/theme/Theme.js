@@ -35,6 +35,11 @@ export const theme1 = {
       color4: "var(--stackedGraph2-color4_t1)",
       color5: "var(--stackedGraph2-color5_t1)",
     },
+    chart: {
+      transitLeadTime: {
+        color: "var(--transitLeadTime-color1_t1)",
+      },
+    },
   },
 };
 
@@ -73,6 +78,11 @@ export const theme2 = {
       color3: "var(--stackedGraph2-color3_t2)",
       color4: "var(--stackedGraph2-color4_t2)",
       color5: "var(--stackedGraph2-color5_t2)",
+    },
+    chart: {
+      transitLeadTime: {
+        color: "var(--transitLeadTime-color1_t2)",
+      },
     },
   },
 };

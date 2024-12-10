@@ -1,7 +1,10 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
+import { useTheme } from "../../context/ThemeContext"; 
 
 const ShipmentsHandledChart = ({ chartTitle, data }) => {
+  const { isThemeOne } = useTheme();
+
   // Prepare data for pending and clearance
   const categories = [...new Set(data.map((item) => item.SHIPPER))]; // Unique shippers
   const pendingSeries = categories.map(
@@ -26,8 +29,8 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
       curve: "smooth", // Smooth lines
       // width: 2,
     },
-    markers: {
-      size: 0, // Disable markers
+    dataLabels: {
+      enabled: false, // Disable data labels on the chart line
     },
     xaxis: {
       categories: abbreviatedCategories,
@@ -38,12 +41,12 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
         title: {
           text: "Pending Gross Weight (Tons)",
           style: {
-            color: "#FF4D4F", // Match "Pending" color
+            color: "#8740CD", // Match "Pending" color
           },
         },
         labels: {
           style: {
-            colors: "#FF4D4F", // Match "Pending" color
+            colors: "#8740CD", // Match "Pending" color
           },
         },
       },
@@ -52,12 +55,12 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
         title: {
           text: "Clearance Gross Weight (Tons)",
           style: {
-            color: "#28A745", // Match "Clearance" color
+            color: "#628EFF", // Match "Clearance" color
           },
         },
         labels: {
           style: {
-            colors: "#28A745", // Match "Clearance" color
+            colors: "#628EFF", // Match "Clearance" color
           },
         },
       },
@@ -77,7 +80,7 @@ const ShipmentsHandledChart = ({ chartTitle, data }) => {
           </div>`;
       },
     },
-    colors: ["#8740CD", "#628EFF"], // Pending (red), Clearance (green),
+    colors: isThemeOne ?  ["#8740CD", "#628EFF" ]  : ["#344966", "#a5a5a5"], // Pending (red), Clearance (green),
     legend: {
       position: "top",
     },

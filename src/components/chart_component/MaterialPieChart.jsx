@@ -1,7 +1,10 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
+import { useTheme } from "../../context/ThemeContext"; 
 
 const MaterialPieChart = ({ chartTitle, data }) => {
+  const { isThemeOne } = useTheme();
+
   // Filter out "Grand Total" and create separate data for display
   const filteredData = data.filter((item) => item.Description !== "Grand Total");
   const grandTotal = data.find((item) => item.Description === "Grand Total")?.["Sum of Gross weight in Tons"] || 0;
@@ -38,7 +41,7 @@ const MaterialPieChart = ({ chartTitle, data }) => {
         },
       },
     },
-    colors: ["#775DD0", "#00E396", "#FEB019", "#FF4560","#008FFB"], // Optional color customization
+    colors: isThemeOne ? ["#775DD0", "#00E396", "#FEB019", "#FF4560","#008FFB"] : ["#344966", "#A0B2A6", "#0D1321", "#B4CDED","#748CAB"], 
   };
 
   const series = seriesData;

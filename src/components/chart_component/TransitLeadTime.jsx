@@ -1,9 +1,11 @@
 import React from "react";
 import Chart from "react-apexcharts";
 import { rawTransitData } from "../../store/DataProvider";
+import { useTheme } from "../../context/ThemeContext"; 
 
 const TransitLeadTime = ({ chartTitle }) => {
-  
+  const { isThemeOne } = useTheme();
+
   // Prepare the data for the chart
   const chartData = {
     series: [
@@ -18,6 +20,9 @@ const TransitLeadTime = ({ chartTitle }) => {
         toolbar: {
             show: false,
           },
+      },
+      dataLabels: {
+        enabled: false, // Disable data labels on the chart line
       },
       xaxis: {
         categories: rawTransitData.map((item) => item.docRcd), // Dates on the x-axis
@@ -43,7 +48,7 @@ const TransitLeadTime = ({ chartTitle }) => {
         curve: "smooth",
         // width: 2,
       },
-      colors: ["#3B82F6"], // Blue color for the line
+      colors: [isThemeOne ? "#3B82F6": "#344966"],  // Blue/ dark navy  color for the line
       tooltip: {
         custom: function ({ series, seriesIndex, dataPointIndex,}) {
             const docRcd = rawTransitData[dataPointIndex].docRcd;
