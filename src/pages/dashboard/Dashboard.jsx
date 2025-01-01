@@ -3,17 +3,17 @@ import React from "react";
 import { Col, Row } from "antd";
 // import { useTheme } from "../../context/ThemeContext";
 // import styles from "../../styles/Dashboard.module.css";
-import { rawTransitData, clearanceLeadTimeData, supplierData, materialData,shipmentData, shipmentCostsData } from "../../store/DataProvider"
+import { clearanceLeadTimeData, supplierData, materialData, shipmentData, shipmentCostsData } from "../../store/DataProvider"
 import InfoCard from "../../components/InfoCard";
 // import ShipperChargesChart from "../../components/chart_component/ShipperChargesChart";
 import DashboardSidemenu from "./DashboardSidemenu";
 import TransitLeadTime from "../../components/chart_component/TransitLeadTime";
 import ClearanceLeadTime from "../../components/chart_component/ClearanceLeadTime"
-import SupplierBarChart from "../../components/chart_component/SupplierBarChart";
 import MaterialPieChart from "../../components/chart_component/MaterialPieChart";
 // import ShipmentsStackedBarChart from "../../components/chart_component/ShipmentsStackedBarChart";
 import ShipmentsHandledChart from "../../components/chart_component/ShipmentsHandledChart";
 import ShipmentCostsChart from "../../components/chart_component/ShipmentCostsChart";
+import SupplierPieChart from "../../components/chart_component/SupplierPieChart";
 
 const Dashboard = () => {
   // const { isThemeOne } = useTheme();
@@ -24,7 +24,7 @@ const Dashboard = () => {
   //   value: item.leadTime, // Using leadTime as value
   // }));
   //-------------------------------- Transit lead time functions--> END ---------------------------------------
-  
+
   // const itemsPerPage = 25; // Number of items to show per page
   // const [currentPage, setCurrentPage] = useState(1);
 
@@ -52,7 +52,7 @@ const Dashboard = () => {
 
         <Col span={24}>
           <InfoCard>
-            <TransitLeadTime chartTitle="Transit Lead Time"  data={rawTransitData} />
+            <TransitLeadTime chartTitle="Transit Lead Time" />
           </InfoCard>
         </Col>
 
@@ -65,10 +65,11 @@ const Dashboard = () => {
 
         {/*Supplier Data */}
 
-        <Col span={24}>
-        <InfoCard>
-        <SupplierBarChart chartTitle="Supplier Data" data={supplierData} />
-        </InfoCard>
+        <Col span={12}>
+          <InfoCard>
+            {/* <SupplierBarChart chartTitle="Supplier Data" data={supplierData} /> */}
+            <SupplierPieChart chartTitle="Supplier Data" data={supplierData} />
+          </InfoCard>
         </Col>
 
         {/* <Col span={24}>
@@ -85,39 +86,29 @@ const Dashboard = () => {
         </Col> */}
 
         {/*Material Data */}
-        <Col span={24}>
+        <Col span={12}>
           <InfoCard>
-
-<MaterialPieChart chartTitle="Material Data" data={materialData}/>
-
-            {/* {isThemeOne ? (
-              <DonutChartGradient
-                chartTitle="Material Data"
-                chartData={productData}
-              />
-            ) : (
-              <DonutChart chartTitle="Material Data" chartData={productData} />
-            )} */}
+            <MaterialPieChart chartTitle="Material Data" data={materialData} />
           </InfoCard>
         </Col>
 
         {/* shipments handled  */}
         <Col span={24}>
           <InfoCard>
-            <ShipmentsHandledChart chartTitle="Shipments Handled (Pending vs. Cleared)" data={shipmentData}/>
+            <ShipmentsHandledChart chartTitle="Shipments Handled (Pending)" data={shipmentData} />
           </InfoCard>
         </Col>
 
         {/* Shipment Costs Analysis by Shipper */}
         <Col span={24}>
           <InfoCard>
-            <ShipmentCostsChart chartTitle="Shipment Costs Analysis by Shipper" 
-            data={shipmentCostsData} 
+            <ShipmentCostsChart chartTitle="Shipment Costs Analysis by Shipper"
+              data={shipmentCostsData}
             // currentPage={currentPage}
             // itemsPerPage={itemsPerPage}
             />
-          
-        {/* <div style={{ marginTop: "20px", textAlign:"center" }}>
+
+            {/* <div style={{ marginTop: "20px", textAlign:"center" }}>
         <Button onClick={goToPreviousPage} disabled={currentPage === 1}>
           Previous
         </Button>
@@ -126,12 +117,12 @@ const Dashboard = () => {
           Next
         </Button>
       </div>     */}
-      </InfoCard>
+          </InfoCard>
         </Col>
       </Row>
-      
+
     </div>
-    
+
   );
 };
 

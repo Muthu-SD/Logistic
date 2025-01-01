@@ -1,7 +1,7 @@
 import React from "react";
 import Chart from "react-apexcharts";
 import { rawTransitData } from "../../store/DataProvider";
-import { useTheme } from "../../context/ThemeContext"; 
+import { useTheme } from "../../context/ThemeContext";
 
 const TransitLeadTime = ({ chartTitle }) => {
   const { isThemeOne } = useTheme();
@@ -18,8 +18,8 @@ const TransitLeadTime = ({ chartTitle }) => {
       chart: {
         type: "area",
         toolbar: {
-            show: false,
-          },
+          show: false,
+        },
       },
       dataLabels: {
         enabled: false, // Disable data labels on the chart line
@@ -28,6 +28,9 @@ const TransitLeadTime = ({ chartTitle }) => {
         categories: rawTransitData.map((item) => item.docRcd), // Dates on the x-axis
         title: {
           text: "Document Receipt Date (DOC. RCD.)",
+          style: {
+            fontSize: "14px"
+          },
         },
         fill: {
           type: "gradient",
@@ -42,19 +45,22 @@ const TransitLeadTime = ({ chartTitle }) => {
       yaxis: {
         title: {
           text: "Lead Time (Days)",
+          style: {
+            fontSize: "14px"
+          },
         },
       },
       stroke: {
         curve: "smooth",
         // width: 2,
       },
-      colors: [isThemeOne ? "#3B82F6": "#344966"],  // Blue/ dark navy  color for the line
+      colors: [isThemeOne ? "#3B82F6" : "#344966"],  // Blue/ dark navy  color for the line
       tooltip: {
-        custom: function ({ series, seriesIndex, dataPointIndex,}) {
-            const docRcd = rawTransitData[dataPointIndex].docRcd;
-            const arrivalDt = rawTransitData[dataPointIndex].arrivalDt;
-            const leadTime = series[seriesIndex][dataPointIndex];
-            return `
+        custom: function ({ series, seriesIndex, dataPointIndex, }) {
+          const docRcd = rawTransitData[dataPointIndex].docRcd;
+          const arrivalDt = rawTransitData[dataPointIndex].arrivalDt;
+          const leadTime = series[seriesIndex][dataPointIndex];
+          return `
               <div style="padding: 10px; border: 1px solid #ddd; background: #fff;">
                 <strong>Document Receipt Date:</strong> ${docRcd}<br/>
                 <strong>Arrival Date:</strong> ${arrivalDt}<br/>
@@ -67,7 +73,7 @@ const TransitLeadTime = ({ chartTitle }) => {
 
   return (
     <div>
-        <h3>{chartTitle}</h3>
+      <h3>{chartTitle}</h3>
       <Chart
         options={chartData.options}
         series={chartData.series}

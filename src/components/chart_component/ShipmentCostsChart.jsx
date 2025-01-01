@@ -40,7 +40,10 @@ const ShipmentCostsChart = ({ chartTitle, data, itemsPerPage = 20 }) => {
         xaxis: {
             categories: categories,
             title: {
-                text: "Shippers",
+                text: "Shippers", 
+                style: {
+                fontSize:"14px"
+              }
             },
             // labels: {
             //     rotate: -45, // Rotate labels to save space if needed
@@ -48,7 +51,10 @@ const ShipmentCostsChart = ({ chartTitle, data, itemsPerPage = 20 }) => {
         },
         yaxis: {
             title: {
-                text: "Costs (USD)",
+                text: "Costs (USD)", 
+                style: {
+                fontSize:"14px"
+              }
             },
         },
         tooltip: {

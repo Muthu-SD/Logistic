@@ -25,6 +25,7 @@ const MaterialPieChart = ({ chartTitle, data }) => {
     },
     legend: {
       position: "bottom",
+      fontSize: '10px',
     },
     plotOptions: {
       pie: {
@@ -49,7 +50,7 @@ const MaterialPieChart = ({ chartTitle, data }) => {
   return (
     <div>
       <h3>{chartTitle}</h3>
-      <ReactApexChart options={options} series={series} type="donut" height="350px" />
+      <ReactApexChart options={options} series={series} type="donut" height="260px" />
     </div>
   );
 };

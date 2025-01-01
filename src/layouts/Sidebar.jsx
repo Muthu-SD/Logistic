@@ -39,7 +39,7 @@ const navItems = [
 
 const Sidebar = () => {
   const { user ,logout } = useStore();
-  const { theme } = useTheme();
+  const { theme, isThemeOne } = useTheme();
   // const { logout } = useStore();
   const [selectedKey, setSelectedKey] = useState("/");
 
@@ -67,7 +67,7 @@ const Sidebar = () => {
       style={{ background: theme.token.colorBgContainer }}
     >
       <div className={styles.logoContainer}>
-        <img src={logo} alt="Logo" className={styles.logo} />
+        <img src={logo} alt="Logo" className={styles.logo}  style={{ filter: isThemeOne ? "invert(1)" : "invert(0)" }}  />
       </div>
       <ul className={styles.navLinks}>
         {filteredNavItems.map((item) => {
